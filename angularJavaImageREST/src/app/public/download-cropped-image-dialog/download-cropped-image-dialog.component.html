@@ -1,0 +1,16 @@
+<div style="display: flex;
+ flex-direction: column;
+justify-content: center;
+ align-items: center;
+  justify-items: center;
+   align-content: center; gap: 15px"
+     *ngIf="$croppedValueState | async as croppedValues" class="cropped-values">
+  <div style="display: flex; flex-direction: column;
+   justify-content: center; align-items: center; gap: 10px"
+    *ngFor="let res of croppedValues.possibleResolutions">
+    <button style="width: 150px; height: 80px" mat-raised-button>
+      <mat-icon>download</mat-icon>
+      {{res}}
+    </button>
+  </div>
+</div>

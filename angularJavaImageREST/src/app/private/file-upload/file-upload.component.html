@@ -1,0 +1,126 @@
+<h2 id="header">Publish to <strong>SpecShots</strong></h2>
+
+
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [completed]="uploadSuccess" [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Select image</ng-template>
+    <div id="access-type">
+      <p><strong>Choose Access type :</strong></p>
+      <mat-radio-group [formControl]="fooControl"
+                       (change)="changeStuff($event)"
+                       aria-label="Select an option">
+        <mat-radio-button class="foo" [checked]="true" value="1">
+          <div class="options">
+            <mat-icon>public</mat-icon>
+            Public
+          </div>
+        </mat-radio-button>
+        <mat-radio-button value="0">
+          <div class="options">
+            <mat-icon>lock</mat-icon>
+            Private
+          </div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <ngx-dropzone class="drop-zone" (change)="onSelect($event)">
+      <ngx-dropzone-label class="drop-label">
+        <div *ngIf="isValidating == false && uploadSuccess == false" class="label-content">
+          <button mat-icon-button>
+            <mat-icon style="font-size: 100px;">add_photo_alternate</mat-icon>
+          </button>
+        </div>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center" *ngIf="isValidating == true">
+          <mat-spinner></mat-spinner>
+          <span style="margin-top: 20px">Validating image... This can take a while..</span>
+        </div>
+      </ngx-dropzone-label>
+      <ngx-dropzone-label class="label-header">
+        <h1 *ngIf="isValidating == false && uploadSuccess == false">Drag and drop a file</h1>
+      </ngx-dropzone-label>
+      <ngx-dropzone-label class="label-description">
+        <!--<div *ngIf="isValidating == false && uploadSuccess == false">-->
+          <li class="list-item"><strong>High quality photos</strong></li>
+          <li class="list-item">Only upload photos you <strong>own the rights to</strong></li>
+          <li class="list-item">Respect the intellectual property of others</li>
+          <li class="list-item">Photos are <strong>clear and original</strong></li>
+          <li class="list-item">Zero tolerance for nudity, violence or hate</li>
+          <li class="list-item">Read the provider terms</li>
+        <!--</div>-->
+      </ngx-dropzone-label>
+      <ngx-dropzone-preview class="preview"
+                            *ngFor="let f of files"
+                            [removable]="true"
+                            (removed)="onRemove(f)"
+                            [file]="f">
+        <ngx-dropzone-label style="color: black" class="label-header">{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+      </ngx-dropzone-preview>
+    </ngx-dropzone>
+    <div class="link_ref_label">
+      <mat-icon>public</mat-icon>
+      URL link reference :
+    </div>
+    <mat-form-field id="url_input" appearance="fill" class="example-full-width">
+      <mat-label>URL to image</mat-label>
+      <input matInput (ngModelChange)="urlReferenceValidator()"
+             [formControl]="imageUrlReference"
+             placeholder="http:\\www.xxx.com">
+      <mat-error>Invalid url</mat-error>
+    </mat-form-field>
+  </mat-step>
+  <mat-step>
+      <ng-template  matStepLabel>Edit image for your gallery view</ng-template>
+      <div>
+        <button (click)="cropImageForGallery()"
+                mat-button [disabled]="!(this.$imageData | async)"
+                matTooltip="Select the part of your image which will be displayed as an thumbnail."
+                matTooltipPosition="below"
+                mat-raised-button>Edit</button>
+<!--        <button mat-button matStepperNext>Next</button>-->
+      </div>
+    <div class="cropped-image">
+      <div *ngIf="!displayCroppedImage" style="width: 500px; height: 460px"></div>
+      <div *ngIf="displayCroppedImage" class="cropped">
+        <img matTooltip="This is how your image will look like as a thumbnail."
+             matTooltipPosition="below"
+             [src]="this.$imageData | async" />
+      </div>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template  matStepLabel>Edit image for the download view</ng-template>
+    <div>
+      <button (click)="cropImageForDownloadView()"
+              mat-button [disabled]="!(this.$imageData | async)"
+              matTooltip="Select the part of your image which will be displayed in the download view."
+              matTooltipPosition="below"
+              mat-raised-button>Edit</button>
+      <!--        <button mat-button matStepperNext>Next</button>-->
+    </div>
+    <div class="cropped-image">
+      <div *ngIf="!displayCroppedImage" style="width: 500px; height: 460px"></div>
+      <div *ngIf="displayCroppedImage" class="cropped">
+        <img matTooltip="This is how your image will look like as a thumbnail."
+             matTooltipPosition="below"
+             [src]="this.$croppedDownloadViewImage | async" />
+      </div>
+    </div>
+  </mat-step>
+  <mat-step >
+    <form >
+      <ng-template matStepLabel>Upload file</ng-template>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+<mat-divider></mat-divider>
+<div class="action" style="margin-top: 100px">
+  <button id="close_btn" *ngIf="!(this.spinner | async)" mat-raised-button (click)="close()" style="margin-right: 5px"  mat-flat-button>Cancel</button>
+  <button mat-raised-button *ngIf="isValidToUpload && !(this.spinner | async)" (click)="upload()"  mat-flat-button>Upload</button>
+  <mat-spinner *ngIf="this.spinner | async" ></mat-spinner>
+
+</div>

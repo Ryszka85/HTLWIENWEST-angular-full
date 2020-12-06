@@ -1,0 +1,87 @@
+.container {
+  background: transparent;
+}
+
+
+#del_btn {
+  background-color: #81b29a;
+  color: white;
+}
+
+#access-type {
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  p {
+    margin-right: 10px;
+    font-size: 17px;
+  }
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+  }
+  .mat-slide-toggle {
+
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+}
+#url_input {
+  width: 100%;
+}
+
+.image-detail {
+  height: 150px;
+  width: 330px;
+  margin-left: 40px;
+  margin-top: 20px;
+  span{
+    margin-left: 40px;
+  }
+  .mat-icon {
+    font-size: 60px;
+  }
+  .image-views {
+    margin-top: 25px;
+  }
+}
+
+.image-likes {
+  margin-top: 30px;
+}
+
+#likes {
+  margin-top: 9px;
+  margin-bottom: 0;
+  font-size: 27px;
+}
+
+.download-details {
+  display: flex;
+  flex-direction: column;
+}
+
+#views {
+  font-size: 27px;
+  margin-bottom: 0;
+}
+
+#downloaded {
+  margin-bottom: 0;
+  margin-top: 10px;
+  font-size: 27px;
+}
+
+.image-details {
+  display: flex;
+  flex-direction: row;
+}
+
+

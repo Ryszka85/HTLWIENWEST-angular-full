@@ -1,0 +1,96 @@
+<app-search-toolbar></app-search-toolbar>
+
+<div
+  style="margin-top: 30px; margin-bottom: 10px;display: flex;flex-direction: column ;justify-content: center; align-items: center">
+  <!--  <span>Select the part of the image which should be displayed as an thumbnail</span>-->
+  <!--  <button style="margin-left: 10px" color="primary" mat-raised-button (click)="close()">Crop image</button>-->
+  <!--  <button style="font-size: 20px" *ngIf="croppedWidth | async as width" mat-icon-button>-->
+  <!--    <mat-icon>photo_size_select_large</mat-icon>-->
+  <!--    {{"New width : " + width + "px"}}-->
+  <!--  </button>-->
+  <!--  <button style="font-size: 20px" *ngIf="croppedHeight | async as height" mat-icon-button>-->
+  <!--    <mat-icon>photo_size_select_large</mat-icon>-->
+  <!--    {{"New height : " + height + "px"}}-->
+  <!--  </button>-->
+
+  <div *ngIf="!showDimensions" class="load-image" style="margin: 0 auto;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px">
+    <mat-spinner diameter='100' ></mat-spinner>
+    <span style="font-size: 20px; margin-top: 20px"><strong>Loading image please wait</strong></span>
+  </div>
+  <div *ngIf="showDimensions" class="dimensions"
+       style="width: 700px; padding: 20px; margin-top: 10px; display: flex; flex-direction: row">
+    <!--    <div class="enable-user-input" style="border: 1px solid black;display: flex; flex-direction: row ;justify-content: center;align-items: center">-->
+    <!--      <mat-icon>create</mat-icon>-->
+    <!--      <mat-slide-toggle (change)="changeStuff($event)"-->
+    <!--                        style="margin-left: 20px" [(ngModel)]="enableUserInput"></mat-slide-toggle>-->
+    <!--    </div>-->
+    <!--    <div class="user-input">-->
+    <div class="input-flex-wrapper" style="width: 500px; margin-bottom: 15px">
+      <div class="width" style="">
+        <mat-form-field disabled="true" style="font-size: 20px; width: 100%">
+          <mat-label>Width</mat-label>
+          <input readonly type="number" (change)="changedWidthFunc(input.value)" [formControl]="widthInputField" matInput #input>
+          <mat-hint *ngIf="$details | async as imgDetail">
+            Original width : {{(input.value * diffRatio).toFixed(2)}}
+          </mat-hint>
+          <!--<button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </button>-->
+        </mat-form-field>
+<!--        <span *ngIf="$details | async as imgDetail">{{(input.value * (imgDetail.width / input.value))}}</span >-->
+      </div>
+      <div class="height">
+
+        <mat-form-field disabled="true" style="font-size: 20px; width: 100%;; margin-top: 20px">
+          <mat-label>Height</mat-label>
+          <input readonly type="number" [formControl]="heightInputField" matInput #input2>
+          <mat-hint *ngIf="$details | async as imgDetail">Original height :
+            {{(input2.value * diffRatio).toFixed(2)}}
+          </mat-hint >
+          <!--<button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </button>-->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="crop-download-wrapper" style="margin-left: 30px; display: flex;
+    flex-direction: column; justify-content: center; align-items: center">
+      <button [matMenuTriggerFor]="menu" (onMenuOpen)="cropAndDownload(input.value, input2.value)"  mat-raised-button color="primary">Download</button>
+      <mat-menu style="width: 100%" #menu="matMenu">
+        <div *ngIf="$croppedValues | async as croppedDetails">
+          <div class="hoverable" *ngFor="let detail of croppedDetails.possibleResolutions">
+            <button (click)="download(detail)" style="width: 100%; border-radius: 50%" mat-menu-item>
+              <mat-icon>download</mat-icon>
+              <span>{{detail}}</span>
+            </button>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+    <!--    </div>-->
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!--  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">-->
+  <!--    <mat-chip style="font-size: 18px;max-width: 200px" selected *ngIf="croppedWidth | async as width">-->
+  <!--      {{"Width : " + width + "px"}}-->
+  <!--    </mat-chip>-->
+  <!--    <mat-chip style="font-size: 18px; max-width: 200px" selected *ngIf="croppedHeight | async as height">-->
+  <!--      {{"Height : " + height + "px"}}-->
+  <!--    </mat-chip>-->
+  <!--  </mat-chip-list>-->
+</div>
+<div *ngIf="$base64 | async as img" class="cropper">
+  <div>
+    <image-cropper #event [imageBase64]="img"
+                   [maintainAspectRatio]="true"
+                   [cropper]="cropper"
+                   (imageLoaded)="imageLoaded()"
+                   [aspectRatio]="$ratio | async"
+                   (imageCropped)="imageCropped($event)">
+    </image-cropper>
+  </div>
+</div>

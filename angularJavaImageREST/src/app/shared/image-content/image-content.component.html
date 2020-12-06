@@ -1,0 +1,120 @@
+<!--<div class="testing">-->
+<!--  <cdk-virtual-scroll-viewport itemSize="2" class="example-viewport">-->
+<!--    <div *cdkVirtualFor="let item of rows | async" class="example-item">-->
+<!--&lt;!&ndash;      <div style="width: 1450px; height: 450px;&ndash;&gt;-->
+<!--&lt;!&ndash;                color: #3f51b5;&ndash;&gt;-->
+<!--&lt;!&ndash;                display: grid; grid-column-gap: 10px; grid-template-columns: 33%33%33%;">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div style="margin: 10px; width: 100%" *ngFor="let item2 of item.content">&ndash;&gt;-->
+<!--&lt;!&ndash;          <img class="img" width="330px" height="200px" [src]="item2.link">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--    </div>-->
+<!--  </cdk-virtual-scroll-viewport>-->
+<!--</div>-->
+
+
+<div class="container">
+  <div *ngFor="let item of (models | async); index as i; trackBy: track" class="tile">
+
+    <div class="tile-container">
+      <div class="img-tile">
+        <img class="img"  [src]="item.link">
+      </div>
+      <div class="details">
+
+        <div *ngIf="!item.user.profileImgPath" class="profile-icon">
+          <button class="btn" mat-icon-button>
+            <mat-icon style="font-size: 70px; color: white">account_circle</mat-icon>
+          </button>
+          <a mat-button style="font-size: 20px" *ngIf="!item.user.profileImgPath" class="header"
+             (click)="navigateToUser(item)">
+            {{ item.user.email.substr(0, item.user.email.indexOf('@')) }}
+          </a>
+        </div>
+
+        <div *ngIf="item.user.profileImgPath" class="profile-img">
+          <a mat-button *ngIf="item.user.profileImgPath" class="account-btn" (click)="navigateToUser(item)">
+            <img class="shadow3" id="img-profile" [src]="item.user.profileImgPath" alt="">
+            <span id="user-txt">{{ item.user.email.substr(0, item.user.email.indexOf('@')) }}</span>
+          </a>
+          <!--          <a mat-button *ngIf="item.user.profileImgPath" class="header2" (click)="navigateToUser(item)">-->
+          <!--            {{ item.user.email.substr(0, item.user.email.indexOf('@')) }}-->
+          <!--          </a>-->
+        </div>
+
+
+        <div class="link">
+          <a mat-button>
+            <mat-icon matTooltip="This image is public" (click)="changeImageDetails(item)"
+                      *ngIf="item.isPublic">public
+            </mat-icon>
+            <mat-icon matTooltip="This image is private" (click)="changeImageDetails(item)"
+                      *ngIf="!item.isPublic">lock
+            </mat-icon>
+          </a>
+        </div>
+
+        <div class="content-btn">
+          <button matTooltip="Click to open menu"
+                  style="color: white; font-size: 50px"
+                  mat-icon-button
+                  [matMenuTriggerFor]="menu"
+                  aria-label="Example icon-button with a menu">
+            <mat-icon style="font-size: 30px">more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button *ngIf="editable && isProfile"
+                    (click)="showAddTagsDialog(item)"
+                    mat-menu-item>
+              <mat-icon>edit</mat-icon>
+              <span>Add tags</span>
+            </button>
+            <button (click)="showImageDetailDialog(item)" mat-menu-item>
+              <mat-icon>fullscreen</mat-icon>
+              <span>Fullscreen</span>
+            </button>
+            <a mat-menu-item (click)="download(item)">
+              <mat-icon>save_alt</mat-icon>
+              <span>Download image</span>
+            </a>
+            <a matTooltip="Go to {{item.linkReference}}"
+               mat-menu-item
+               [href]="item.linkReference">
+              <mat-icon>public</mat-icon>
+              <span>Go to source</span>
+            </a>
+          </mat-menu>
+        </div>
+        <div class="likes">
+          <a class="thumbUp" (click)="likeImage(item, item.userId)"
+             mat-icon-button>
+            <mat-icon style="font-size: 30px; color: white">thumb_up</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="tags">
+      <a class="shadow" (click)="clickedTag(i.tag)" href="#" style="background-color: #f4f1de;
+        color: black;
+        text-decoration: none;
+        padding: 5px 20px;
+        border-radius: 20px;
+        margin-top: 2%; margin-right: 1%" *ngFor="let i of item.tags">{{'# ' + i.tag }}
+      </a>
+    </div>
+  </div>
+  <br>
+  <div class="load-btn" *ngIf="evenRowLimit | async">
+    <button (click)="loadNextPage()" color="primary" style="margin-bottom: 2%;
+         width: 100%; height: 60px ;
+         font-size: 30px;" mat-raised-button>
+      Load more
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+  </div>
+</div>
+
+
+
+

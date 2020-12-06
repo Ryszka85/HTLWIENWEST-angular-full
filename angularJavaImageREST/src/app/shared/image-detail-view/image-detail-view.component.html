@@ -1,0 +1,39 @@
+<p>image-detail-view works!</p>
+
+
+<div class="container">
+  <div class="content">
+    <img class="img-content" [src]="data.link" alt="">
+  </div>
+  <div class="download">
+    <button mat-raised-button color="primary" matTooltip="Click to open menu"
+            style="color: white; width: 300px; height: 50px"
+
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu">
+      <!--    <mat-icon style="font-size: 30px">more_vert</mat-icon>-->
+      Download image
+    </button>
+    <mat-menu #menu="matMenu">
+      <button style="width: 500px; height: 100%" mat-menu-item>
+        <mat-icon>aspect_ratio</mat-icon>
+        <span style="display: inline-block; width: 15px"></span>
+        <span>1920 x 1080</span>
+        <span style="display: inline-block; width: 25px"></span>
+        <span>jpg</span>
+        <span style="display: inline-block; width: 25px"></span>
+        <span>620kB</span>
+      </button>
+      <button style="width: 500px; height: 100%" mat-menu-item>
+        <mat-icon>aspect_ratio</mat-icon>
+        <span style="display: inline-block; width: 15px"></span>
+        <span>1280 x 780</span>
+        <span style="display: inline-block; width: 25px"></span>
+        <span>jpg</span>
+        <span style="display: inline-block; width: 25px"></span>
+        <span>120kB</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+

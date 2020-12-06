@@ -1,0 +1,35 @@
+<div style="display: flex; flex-direction: column; font-size: 23px" class="container">
+
+  <!--<mat-divider style="margin-top: 40px"></mat-divider>-->
+  <mat-form-field style="margin-top: 40px">
+    <mat-label>Width</mat-label>
+    <input style="width: 250px" (focusin)="focusedInWidth($event)" type="text" matInput [formControl]="widthInputField">
+    <mat-error *ngIf="width.errors">
+      <div *ngIf="width.errors.forbiddenValue">
+        {{"Invalid width : "  + width.errors.forbiddenValue.value}}
+      </div>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 40px">
+    <mat-label>Height</mat-label>
+    <input (focusin)="focusInHeight($event)" style="width: 250px" type="text" matInput [formControl]="heightInputField">
+    <mat-error *ngIf="height.errors">
+      <div *ngIf="height.errors.forbiddenValue">
+        {{"Invalid height : "  + height.errors.forbiddenValue.value}}
+      </div>
+    </mat-error>
+  </mat-form-field>
+  <div *ngIf="(width.errors || height.errors) && $selectedImage | async as selectedImg">
+    <div *ngIf="width.value > 100 || height.value > 100">
+      <mat-error>{{"Selected size is invalid."}}</mat-error>
+      <mat-error>{{"Size cannot be bigger than : " }}</mat-error>
+      <mat-error>{{selectedImg.width + " X " + selectedImg.height}}</mat-error>
+    </div>
+    <mat-error *ngIf="width.value < 100 || height.value < 100">{{"Image is to small"}}</mat-error>
+  </div>
+  <button (click)="downloadImage(width.value, height.value)" *ngIf="!width.errors || !height.errors" style="margin: 40px auto;font-size: 30px" mat-fab color="primary">
+        <mat-icon>download</mat-icon>
+  </button>
+</div>
+
+

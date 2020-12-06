@@ -1,0 +1,177 @@
+$primary: #3f51b5;
+$greyDark: #7395AE;
+
+$primarBlue: #3d405b;
+
+$beige: #f4f1de;
+
+.white_color {
+  color: white;
+}
+
+.row {
+  margin-top: 50px;
+  position: relative;
+}
+
+
+.btn {
+  background-color: #EFD6C5;
+  /*margin-top: 420px;*/
+  /*margin-bottom: 70px;*/
+}
+
+
+#img-logo {
+
+}
+
+.mat-stroked-button {
+  color: white;
+  background-color: red;
+  border-radius: 50px;
+  /*border-color: white;*/
+}
+
+
+
+.logo {
+  /*display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  margin: 0 auto;*/
+  /*width: 400px;
+  height: 400px;*/
+  position: absolute;
+  top: -7rem;
+  /*right: 35%;*/
+  /*margin-bottom: 30px;*/
+  /*opacity: 0.5;*/
+  /*margin-bottom: 80px;*/
+  /*position: sticky;*/
+  height: 300px;
+  /*background-image: url('~src/assets/Specshots-Logo.png');
+  background-repeat: no-repeat;
+  background-position: 1000px;*/
+  opacity: 0.4;
+  /*z-index: 4;*/
+}
+
+
+
+/*.banner-caption > * {
+  margin-bottom: 40px;
+}*/
+
+
+
+.banner-caption > h1 {
+  font-size: 70px;
+  margin-bottom: 40px;
+  color: white;
+
+}
+
+.banner-caption > * {
+  font-weight: bolder;
+}
+
+.banner-caption > h3 {
+  /*margin-bottom: 140px;*/
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
+.banner-caption > p {
+  /*margin-bottom: 210px;*/
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.banner-caption {
+  position: relative;
+  /*height: 300px;*/
+}
+
+/* Style the header */
+#top {
+  background-color: #f7b801;
+  height: 450px;
+  //opacity: 0.9;
+  /*padding: 30px;*/
+  padding-top:200px;
+  padding-bottom:100px;
+  max-width: auto;
+  text-align: center;
+  /*font-size: 25px;*/
+  color: white;
+  column-break-inside: avoid
+}
+
+#top h2 {
+  font-size: 45px;
+  line-height:20%;
+}
+
+html, body{
+  height:100%;
+}
+
+@media(min-width:468px){
+  .container-1{
+    padding-left: 270px;
+    padding-right: 270px;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+
+.container-1 div{
+  /*border:1px #ccc solid;*/
+  padding:50px;
+  font-size: 18px;
+  color: darkgray;
+}
+
+.container-1 div h3{
+  font-size: 25px;
+}
+
+
+.box-1{
+  flex: 0 1 auto;
+  order:1;
+}
+
+.box-2{
+  flex: 0 1 auto;
+  order:2;
+}
+
+.box-3{
+  flex: 0 1 auto;
+  order: 3;
+}
+
+@media screen and (max-width: 768px){
+  .container-1{
+    flex-direction: column;
+  }
+
+  #top h2 {
+    font-size: 30px;
+    line-height:20%
+  }
+}
+
+footer{
+  background-color: $primary;
+  opacity: 0.9;
+  padding: 60px 0px;
+  max-width: auto;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+}

@@ -1,0 +1,79 @@
+<app-search-toolbar></app-search-toolbar>
+<div class="container">
+  <div class="filler_left"></div>
+  <div class="left">
+    <div class="profile_icon">
+      <button *ngIf="!($profileImg | async)" disabled mat-icon-button
+              aria-label="Example icon button with a home icon">
+        <mat-icon style="font-size: 195px">account_circle</mat-icon>
+      </button>
+      <img class="profile-img" [src]="$profileImg | async" alt="">
+    </div>
+  </div>
+  <div class="right">
+    <div class="title">
+      <div class="user-name">
+        <span *ngIf="$name | async" style="font-size: 40px; margin-top: 2%; margin-bottom: 6px">
+        <strong>
+          {{$name | async}}
+        </strong>
+      </span>
+      </div>
+      <br>
+      <div class="user-name">
+        <!--        <p style="font-size: 17px">-->
+        <!--          -->
+        <!--        </p>-->
+        <p style="font-size: 17px; line-height: 28px">
+          Download free, beautiful high-quality photos curated by {{ $name | async }}.
+        </p>
+      </div>
+      <button *ngIf="$isOwner | async" style="" mat-icon-button>
+        <mat-icon>edit</mat-icon>
+        Edit profile
+      </button>
+    </div>
+  </div>
+</div>
+
+<mat-tab-group mat-stretch-tabs class="mat-tab-group">
+  <mat-tab class="tab" label="Gallery">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">photo_library</mat-icon>
+      Images
+    </ng-template>
+    <app-image-content [isProfile]="true" [data]="$byUserIdData | async"></app-image-content>
+<!--    <div class="container-2">-->
+<!--      <div *ngFor="let item of $byUserIdData | async; index as i;" class="tile">-->
+<!--        <div class="tile-container">-->
+<!--          <div class="img-tile">-->
+<!--            <img class="img" width="500px" height="520px" [src]="item.link">-->
+<!--          </div>-->
+<!--          <div class="details">-->
+<!--            <div class="content">-->
+<!--              <button class="btn" mat-icon-button>-->
+<!--                <mat-icon style="font-size: 70px">account_circle</mat-icon>-->
+<!--              </button>-->
+<!--              <a mat-button href="#">-->
+<!--                <h1>{{ 'User : @' + item.email.substr(0, item.email.indexOf('@')) }}</h1>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--            <div class="content-btn">-->
+<!--              <a target="_self" [href]="downloadLink" (click)="download(item.name, item.userId)" mat-icon-button>-->
+<!--                <mat-icon style="font-size: 60px">save_alt</mat-icon>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  </mat-tab>
+  <mat-tab label="Likes">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Likes
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Third"> Content 3</mat-tab>
+</mat-tab-group>
+

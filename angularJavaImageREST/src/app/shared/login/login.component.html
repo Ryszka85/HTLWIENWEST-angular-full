@@ -1,0 +1,48 @@
+<div style="width: 310px; ">
+  <mat-dialog-content class="content" [formGroup]="formGroup">
+    <h1 style="font-family: 'agave Nerd Font',cursive">
+      <strong>Login</strong>
+    </h1>
+    <!--  <div class="icon" >-->
+    <!--    <mat-icon style="font-size: 60px">account_box</mat-icon>-->
+    <!--    -->
+    <!--  </div>-->
+    <p>
+      <mat-form-field [style.width.px]=330>
+        <mat-label>Email</mat-label>
+        <input [style.fontSize.px]="15"
+               matInput [formControl]="emailFormField">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field [style.width.px]=330>
+        <mat-label>Password</mat-label>
+        <input [style.fontSize.px]="15" type="password"
+               matInput [formControl]="passwordFormField">
+      </mat-form-field>
+    </p>
+    <!--  <mat-grid-list gutterSize="10px" cols="1" rowHeight="220px">-->
+    <!--    <mat-grid-tile>-->
+    <!--      <div class="container2">-->
+    <!--        -->
+    <!--        -->
+    <!--      </div>-->
+    <!--    </mat-grid-tile>-->
+    <!--  </mat-grid-list>-->
+  </mat-dialog-content>
+  <div class="container">
+    <mat-dialog-actions>
+      <div style="display: flex; flex-direction: row; align-content: space-evenly">
+        <button id="loginBtn" (click)="login()" mat-raised-button color="primary">Login</button>
+        <button (click)="close()" mat-raised-button color="warn">Close</button>
+        <button (click)="googleLogin()" mat-icon-button>
+          <img src="../../../assets/btn_google_signin_dark_normal_web.png" alt="FOO">
+        </button>
+      </div>
+      <mat-error style="margin-top: 10px; display: flex; justify-content: flex-start" *ngIf="$requestStatus | async as status">
+        {{ status.message }}
+      </mat-error>
+    </mat-dialog-actions>
+  </div>
+</div>
+

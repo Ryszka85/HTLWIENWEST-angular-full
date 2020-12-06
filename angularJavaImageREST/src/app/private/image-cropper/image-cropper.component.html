@@ -1,0 +1,18 @@
+<div style=" margin-bottom: 10px;display: flex; flex-direction: row; align-content: center; align-items: center">
+  <span>Select the part of the image which should be displayed as an thumbnail</span>
+  <button style="margin-left: 10px" color="primary" mat-raised-button (click)="close()">Crop image</button>
+</div>
+<div  class="cropper">
+  <image-cropper
+    [imageBase64]="croppedImage"
+    [maintainAspectRatio]="true"
+    [resizeToWidth]="width"
+    [resizeToHeight]="height"
+    [cropperStaticWidth]="width"
+    [cropperStaticHeight]="height"
+    (imageCropped)="imageCropped($event)">
+  </image-cropper>
+</div>
+
+
+

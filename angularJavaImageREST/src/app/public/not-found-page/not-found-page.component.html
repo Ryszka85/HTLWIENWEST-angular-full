@@ -1,0 +1,8 @@
+<div style="display: flex; justify-content: center; align-items: center">
+
+  <mat-error *ngIf="$requestStatus | async as status" style=";margin: 0 auto; font-size: 30px">
+    The requested Page could not be found
+    Reason : {{status.message}}
+  </mat-error>
+
+</div>

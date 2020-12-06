@@ -1,0 +1,74 @@
+:host {
+  background-color: #3f51b5;
+  display: grid;
+
+  grid-template:
+    "brand        main       profile" 120px
+    / 1fr         1fr        1fr;
+    justify-items: center;
+  align-items: center;
+  place-items: center;
+  place-content: center;
+  border-bottom: 0.8px solid black;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11),
+  0 2px 2px rgba(0, 0, 0, 0.11),
+  0 4px 4px rgba(0, 0, 0, 0.11),
+  0 6px 8px rgba(0, 0, 0, 0.11),
+  0 8px 16px rgba(0, 0, 0, 0.11);
+}
+
+.brand{
+  grid-area: brand;
+  display: grid;
+  grid-template:
+    "android   donut   widget   api_name" auto;
+  place-items: center;
+  grid-column-gap: 5px;
+
+}
+
+.brand > * {
+  color: white;
+}
+
+#android {
+  grid-area: android;
+}
+
+#donut {
+  grid-area: donut;
+}
+
+#widget {
+  grid-area: widget;
+}
+
+#api_name {
+  grid-area: api_name;
+}
+
+.form-ang {
+  grid-area: main;
+  display: grid;
+  grid-template:
+    "search";
+  place-items: center;
+}
+
+.search {
+  grid-area: search;
+  width: 350px;
+  font-size: 20px;
+  border-radius: 20px;
+  outline: none;
+
+}
+
+.ang-form {
+  width: 300px;
+}
+
+.profile_info {
+  grid-area: profile;
+
+}

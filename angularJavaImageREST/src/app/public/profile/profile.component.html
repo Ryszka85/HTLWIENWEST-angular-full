@@ -1,0 +1,113 @@
+<app-search-toolbar [filterable]="true"></app-search-toolbar>
+
+
+<div  class="container">
+  <!--  <div class="filler_left"></div>-->
+
+  <mat-error *ngIf="requestError" style="font-size: 40px">
+    {{errorMessage}}
+  </mat-error>
+
+  <div *ngIf="requestError === false" class="center">
+
+
+    <div class="profile_icon">
+<!--      <button *ngIf="!($logged | async)" disabled mat-icon-button-->
+<!--              aria-label="Example icon button with a home icon">-->
+<!--        <mat-icon style="font-size: 195px">account_circle</mat-icon>-->
+<!--      </button>-->
+
+      <mat-icon class="profile-img" *ngIf="!($profileImg | async)"
+                style="font-size: 165px; color: lightgray; margin-right: 5px">
+        account_circle
+      </mat-icon>
+      <!--      <img *ngIf="($logged | async) as loggedUser" class="profile-img" [src]="loggedUser.profileImgPath">-->
+      <img *ngIf="($profileImg | async) as src" class="profile-img" [src]="src">
+<!--      <img class="profile-img" [src]="userDetails.userProfile.profileImgPath">-->
+    </div>
+    <div class="title">
+      <div class="user-name">
+<!--        <span *ngIf="userDetails"-->
+<!--              style="font-size: 40px; margin-top: 2%; margin-bottom: 6px; line-height: 40px">-->
+<!--          <strong>-->
+<!--            {{userDetails.userProfile.firstName + " " + userDetails.userProfile.lastName}}-->
+<!--          </strong>-->
+<!--        </span>-->
+<!--        <span *ngIf="$userDetails | async as loggedUser"-->
+<!--              style="font-size: 40px; margin-top: 2%; margin-bottom: 6px; line-height: 40px">-->
+<!--          <strong>-->
+<!--            {{loggedUser.firstName + " " + loggedUser.lastName}}-->
+<!--          </strong>-->
+<!--        </span>-->
+          <span *ngIf="$firstLast | async as name"
+                style="font-size: 40px; margin-top: 2%; margin-bottom: 6px; line-height: 40px">
+          <strong>
+            {{name}}
+          </strong>
+        </span>
+      </div>
+      <br>
+      <div class="user-name">
+        <p style="font-size: 17px; line-height: 28px">
+          Download free, beautiful high-quality photos curated <br> by
+<!--          <span *ngIf="userDetails">-->
+<!--            {{userDetails.userProfile.firstName + " " + userDetails.userProfile.lastName }}-->
+<!--         </span>.-->
+<!--          <span *ngIf="$userDetails | async as userDetails">-->
+<!--            {{userDetails.firstName + " " + userDetails.lastName }}-->
+<!--         </span>.-->
+          <span *ngIf="$firstLast | async as name">
+            {{name}}
+         </span>.
+        </p>
+      </div>
+<!--      <div *ngIf="userDetails.isOwner" class="edit">-->
+<!--        <button routerLink="/edit-profile" style="" mat-icon-button>-->
+<!--          <mat-icon>edit</mat-icon>-->
+<!--          Edit profile-->
+<!--        </button>-->
+<!--      </div>-->
+      <div *ngIf="editableProfile | async" class="edit">
+        <button routerLink="/edit-profile" style="" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+          Edit profile
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-tab-group mat-stretch-tabs (selectedTabChange)="imageWasLiked($event)" class="mat-tab-group">
+  <mat-tab class="tab" label="Gallery">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">photo_library</mat-icon>
+      Images
+    </ng-template>
+<!--    <app-image-content [isProfile]="true"-->
+<!--                       [data]="$imgs"></app-image-content>-->
+    <app-image-content [isProfile]="true"
+                       [data]="$userImages"></app-image-content>
+  </mat-tab>
+  <mat-tab label="Likes">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Likes
+    </ng-template>
+<!--    <app-image-content [isProfile]="false"-->
+<!--                       [data]="$likeds"></app-image-content>-->
+    <app-image-content [isProfile]="false"
+                       [data]="$userLikes"></app-image-content>
+  </mat-tab>
+<!--  <mat-tab *ngIf="(editableProfile | async) || (userDetails.isOwner)" label="Third">-->
+<!--    <ng-template mat-tab-label>-->
+<!--      <mat-icon class="example-tab-icon">lock</mat-icon>-->
+<!--      Private-->
+<!--    </ng-template>-->
+<!--  </mat-tab>-->
+  <mat-tab *ngIf="editableProfile | async" label="Third">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">lock</mat-icon>
+      Private
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

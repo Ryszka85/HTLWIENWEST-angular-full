@@ -1,0 +1,115 @@
+<mat-dialog-content class="profile-icon" [formGroup]="formGroup">
+  <h1 style="font-family: 'agave Nerd Font',cursive">
+    <strong>Registration</strong>
+  </h1>
+  <!--  <div class="icon" >-->
+  <!--    <mat-icon style="font-size: 60px">account_box</mat-icon>-->
+  <!--    -->
+  <!--  </div>-->
+  <mat-grid-list gutterSize="10px" cols="2" rowHeight="290px">
+    <mat-grid-tile>
+      <div  class="container2">
+        <mat-form-field [style.width.px]=300>
+          <mat-label>Firstname</mat-label>
+          <input [formControl]="firstNameFormField" [style.fontSize.px]="15"
+                 matInput>
+          <mat-error>Firstname is required</mat-error>
+        </mat-form-field>
+        <mat-form-field [style.width.px]=300>
+          <mat-label>Lastname</mat-label>
+          <input [style.fontSize.px]="15"
+                 matInput [formControl]="formGroup.get('lastName')">
+          <mat-error>Lastname is required</mat-error>
+        </mat-form-field>
+        <mat-form-field [style.width.px]=300>
+          <mat-label>Email</mat-label>
+          <input name="email" type="email" ngModel [email]="true"
+                 [style.fontSize.px]="15"
+                 matInput [formControl]="emailFormField"
+                 pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+          <mat-error>Invalid email</mat-error>
+        </mat-form-field>
+        <mat-dialog-actions>
+          <button [disabled]="!formGroup.valid || invalid" (click)="register()" mat-raised-button color="primary">Register</button>
+          <button (click)="closeDialog()" mat-raised-button color="warn">Close</button>
+          <br>
+          <mat-error style="margin-top: 10px" *ngIf="$requestStatus | async as status">
+            {{status.message}}
+          </mat-error>
+        </mat-dialog-actions>
+
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="container2">
+        <mat-form-field [style.width.px]=300>
+          <mat-label>Password</mat-label>
+          <input (ngModelChange)="checkPasswords()"
+                 [style.fontSize.px]="15" type="password"
+                 matInput [formControl]="passwordFormField">
+          <mat-error>Invalid password</mat-error>
+        </mat-form-field>
+        <mat-form-field [style.width.px]=300>
+          <mat-label>Confirm password</mat-label>
+          <input (ngModelChange)="checkPasswords()"
+                 [style.fontSize.px]="15" type="password"
+                 matInput [formControl]="confirmPwdFormField">
+          <mat-error>Invalid password</mat-error>
+        </mat-form-field>
+        <!--<mat-form-field  [style.width.px]=300>
+          <mat-label>Country</mat-label>
+          <mat-select [formControl]="countryFormField" (selectionChange)="selectedCountry($event)">
+            <mat-option
+              *ngFor="let country of fetchedCountries$ | async"
+              [value]="country.name">
+              {{ country.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+          <mat-form-field [style.width.px]=300>
+            <mat-label>Region</mat-label>
+            <mat-select [formControl]="regionFormField" (selectionChange)="selectedRegion($event)">
+              <mat-option
+                *ngFor="let region of fetchedRegions$ | async"
+                [value]="region.region">
+                {{ region.region }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        <div style="display: flex; flex-direction: row;
+              align-content: space-between;" class="region_zip">
+          <mat-form-field style="margin-right: 5px" [style.width.px]=100>
+            <mat-label>Zipcode</mat-label>
+            <input [formControl]="formGroup.get('zipcode')" (keyup.enter)="selectPostalAndSetCity(element.value)" id="search-input" type="text" #element
+                   (keyup)="searchTerm$.next($event.target.value)"
+                   matInput [matAutocomplete]="auto">
+            <mat-autocomplete style="width: 200px" #auto="matAutocomplete">
+              <mat-option #matOption (click)="selectPostalAndSetCity(matOption.value)"
+                          *ngFor="let zipAndCity of fetchedZipcodesAndCities$ | async"
+                          [value]="zipAndCity.zipCode">
+                {{ zipAndCity.zipCode }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field [style.width.px]=190>
+            <mat-label>City</mat-label>
+            <input [style.fontSize.px]="15"
+                   matInput formControlName="city">
+          </mat-form-field>
+        </div>
+          <mat-form-field [style.width.px]=300>
+            <mat-label>Street</mat-label>
+            <input [style.fontSize.px]="15"
+                   matInput formControlName="street">
+          </mat-form-field>-->
+        <div class="container">
+
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-dialog-content>
+

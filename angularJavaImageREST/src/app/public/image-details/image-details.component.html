@@ -1,0 +1,122 @@
+<app-search-toolbar [filterable]="true"></app-search-toolbar>
+
+<div class="container">
+  <div *ngIf="$selectedImage | async as data" class="content">
+    <div class="img">
+      <img class="img-content"  [src]="data.link" alt="">
+    </div>
+    <div class="content-details">
+      <span class="data-name">{{data.name}}</span>
+    </div>
+  </div>
+  <div class="download" *ngIf="$selectedImage | async as data">
+    <div class="spacer" style="margin-bottom: 20px; background-color: #941B85">
+      <div class="profile-detail">
+        <div class="temp">
+          <button mat-icon-button>
+            <!--        <mat-icon>account_circle</mat-icon>-->
+            <img class="shadow" width="60px" height="60px" style="border-radius: 100%;"
+                 src="{{data.user.profileImgPath}}" alt="">
+          </button>
+          <span style="margin-left: 30px; font-size: 18px; color: white">{{data.user.username}}</span>
+        </div>
+      </div>
+      <mat-divider style="margin-top: 40px; margin-bottom: 20px; border-color: white"></mat-divider>
+
+      <div class="img-detail">
+        <div class="img-name" style="display: flex; flex-direction: row; align-items: baseline; flex-wrap: wrap; max-width: 220px">
+          <!--<mat-icon  color="primary" style="font-size: 40px; margin-right: 5px">image</mat-icon>-->
+          <button style=" ;width: 50px; height: 50px; font-size: 18px; word-break: break-all; background-color: white" mat-fab>
+            <mat-icon style="color: black" >image</mat-icon>
+          </button>
+          <span style="margin-left: 30px; font-size: 18px; max-width: 130px; color: white">{{data.name}}</span>
+        </div>
+
+        <div class="img-stats">
+          <mat-chip-list style="margin-top: 20px; margin-bottom: 10px" aria-label="Fish selection">
+            <div class="chips" style="display: flex; flex-direction: row; margin-top: 20px">
+              <mat-chip class="shadow chip" style="background-color: white"  selected>
+                <mat-icon style="margin-right: 3px; margin-left: 3px; color: black">thumb_up</mat-icon>
+                <span style="margin-left: 3px; margin-right: 3px; color: black">{{data.liked}}</span>
+              </mat-chip>
+              <mat-chip class="shadow chip" style="background-color: white"  selected>
+                <mat-icon style="color: black">save_alt</mat-icon>
+                <span style="margin-left: 3px; margin-right: 3px; color: black">{{data.downloaded}}</span>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+        </div>
+      </div>
+
+
+      <mat-divider style="margin-top: 20px; margin-bottom: 10px; border-color: white"></mat-divider>
+
+
+      <div class="download-image">
+        <button class="shadow" mat-raised-button matTooltip="Click to open menu"
+                style="color: white; width: 300px; height: 50px; background-color: #ef233c"
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu">
+          <!--    <mat-icon style="font-size: 30px">more_vert</mat-icon>-->
+          Download
+        </button>
+
+        <mat-menu backdropClass="img-download-detail" #menu="matMenu" >
+          <div *ngFor="let detail of data.imageDetails">
+            <button (click)="download(detail)" style="width: 700px; height: 100%" mat-menu-item>
+              <mat-icon>aspect_ratio</mat-icon>
+              <span style="display: inline-block; width: 15px"></span>
+              <span>{{detail.width + " x " + detail.height}}</span>
+              <!--          <span style="display: inline-block; width: 25px"></span>-->
+              <!--          <span>{{detail.contentType}}</span>-->
+              <span style="display: inline-block; width: 25px"></span>
+              <span>{{(detail.size / 1024).toFixed(1) + " kB"}}</span>
+            </button>
+          </div>
+          <mat-divider></mat-divider>
+          <button mat-menu-item [mat-menu-trigger-for]="cropImage">
+            <mat-icon>settings_applications</mat-icon>
+            Download options
+          </button>
+
+          <mat-menu #cropImage="matMenu" xPosition="before">
+            <button (click)="cropImageForDownload(data.imageDetails[0])" mat-menu-item>
+              <mat-icon>photo_size_select_large</mat-icon>
+              Crop image
+            </button>
+            <mat-divider></mat-divider>
+            <button (click)="getIndividualResolutionDownloadDialog(data.imageDetails[0])" mat-menu-item>
+              <mat-icon>transform</mat-icon>
+              Set individual dimensions</button>
+          </mat-menu>
+        </mat-menu>
+      </div>
+    </div>
+
+
+
+
+    <div class="related-tags">
+      <h3>Related tags : </h3>
+      <div *ngIf="$selectedImage | async as data" class="tags">
+        <a class="shadow" (click)="clickedTag(i.tag)" style="background-color: #f4f1de; color: black;
+        color: black;
+        text-decoration: none;
+        padding: 5px 20px;
+        border-radius: 20px;
+        margin-top: 2%; margin-right: 1%" *ngFor="let i of data.tags">{{'# ' + i.tag }}
+        </a>
+      </div>
+    </div>
+    <span style="margin-top: 20px"></span>
+  </div>
+</div>
+
+<div class="related-images-container">
+  <div class="header">
+    <h2>Related images : </h2>
+  </div>
+  <app-image-content [isProfile]="false"
+                     [data]="$relatedImages"></app-image-content>
+</div>
+

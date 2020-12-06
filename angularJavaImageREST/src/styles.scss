@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+
+//.mat-form-field-underline {
+//  background-color: white !important;
+//}
+//
+//
+//
+//.mat-form-field-ripple {
+//  background-color: white !important;;
+//}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:red;
+  background-color:red;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:red;
+}
+
+@media screen and (max-width: 570px) {
+  .mat-tab-group {
+    height:unset!important;
+    width: 900px;
+    overflow: hidden !important;
+  }
+}
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: #941B85;
+  color: white;
+}
+
+
+.login-dialog .mat-dialog-container {
+  /*max-width: 100vw !important;
+  width: 100vw !important;
+  min-width: 100vw !im;*/
+
+}
+
+.mat-tab-labels {
+  /*background-color: #f4f1de;*/
+}
+
+.setIndividualResDialog {
+  padding: 0;
+}
+
+::ng-deep .mat-checkbox-frame {
+  border-color: white
+}
+
+.uploadError {
+  background: red;
+}
+
+.change-img-details .mat-dialog-container {
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Epilogue", sans-serif, "Helvetica Neue", sans-serif; }
+
+.add-tag-dialog .mat-dialog-container::-webkit-scrollbar {
+  width: 7px;
+}
+
+.image-details .mat-dialog-container::-webkit-color-swatch {
+
+}
+
+.crop-image-gallery .cropped-image::-webkit-scrollbar {
+  border-radius: 40px;
+  width: 7px;
+}
+
+.crop-image-gallery .cropped-image::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.crop-image-gallery .cropped-image::-webkit-scrollbar-thumb{
+  background-color: lightblue;
+  border-radius: 40px;
+}
+
+.add-tag-dialog .mat-dialog-container::-webkit-scrollbar {
+  border-radius: 30px;
+}
+
+.add-tag-dialog .mat-dialog-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.add-tag-dialog .mat-dialog-container::-webkit-scrollbar-thumb {
+  background-color: lightslategray;
+  border-radius: 30px;
+}
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+
+.mat-tab-body-content{
+  height:unset!important;
+}
+
+::-webkit-scrollbar-thumb {
+  //border-radius: 10px;
+  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  //background-color: #fcefee;
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+//.img-download-detail ::ng-deep.mat-menu-panel {
+//  max-width: none !important;
+//  width: 400px;
+//}

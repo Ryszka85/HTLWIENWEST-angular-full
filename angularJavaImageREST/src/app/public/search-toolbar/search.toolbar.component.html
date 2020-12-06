@@ -1,0 +1,201 @@
+<div class="primary-color"  [ngClass]="[isMobileDevice && ($isLoggedIn | async) == true ? 'mobile-logged-container' :
+                  isMobileDevice ? 'mobile-container' :
+                  isDesktopDevice  && ($isLoggedIn | async) == true ? 'container' :
+                   isDesktopDevice ?  'container-not-logged': 'tablet-container']">
+  <div *ngIf="isDesktopDevice || isTabletDevice" class="left">
+    <a>
+      <!--<mat-icon style="margin-top: 5px">android</mat-icon>-->
+      <img width="60px" height="60px"  src="assets/Specshots-Logo.png">
+    </a>
+    <!--<a style="margin-left: 10px;">
+      <mat-icon style="text-align: center; margin-top: 5px">donut_small</mat-icon>
+    </a>
+    <a style="margin-left: 10px;">
+      <mat-icon style="margin-top: 5px;">widgets</mat-icon>
+    </a>-->
+    <a style="margin-left: 10px; font-family: Epilogue,serif" >
+      <strong>Welcome to SpecShots</strong>
+    </a>
+  </div>
+  <div class="center-wrapper" fxLayoutAlign="center" fxFlexAlign="center">
+    <div class="center">
+      <div style="display: flex; flex-direction: row;" id="srh">
+
+        <input [ngClass]="[isMobileDevice ? 'mobile-width' : isTabletDevice ? 'tablet-width' : 'desktop-width']"
+          class="shadow" style=" margin-bottom: 50px" (keyup.enter)="search(element.value)" id="search-input"
+               type="text" #element
+               (keyup)="searchTerm$.next($event.target.value)"
+               matInput [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <div class="user-search" *ngIf="searchOption === 'Users'">
+            <mat-option #matOption (click)="search(matOption.value)"
+                        *ngFor="let option of $users | async"
+                        [value]="option.username">
+              {{option.username}}
+            </mat-option>
+          </div>
+          <div class="tag-search" *ngIf="searchOption === 'Tags'">
+            <mat-option #matOption (click)="search(matOption.value)"
+                        *ngFor="let option of $tagOptions | async"
+                        [value]="option.value">
+              {{option.value}}
+            </mat-option>
+          </div>
+        </mat-autocomplete>
+
+
+        <!--<div id="btn" style="margin-left: 20px; display: flex; flex-direction: row; align-items: center;">
+          <button (click)="search(element.value)" class="search-btn shadow" mat-button
+                  style="background: white;margin-bottom: 2px">
+            <mat-icon style="font-size: 20px;" matPrefix>search</mat-icon>
+          </button>
+        </div>-->
+        <div class="btn" style=" display: flex; flex-direction: row; align-items: center;">
+          <label>
+            <select matTooltip="Select what you want to search for."
+                    matTooltipPosition="below"
+                    class="shadow" name="search-by" [(ngModel)]="searchOption"
+                    style="margin-left: 20px;margin-top: 1px; border: none;
+          height: 37px;
+          background: white;
+           border-radius: 13px; outline: none;padding: 5px">
+              <option class="q_options" value="Tags">Tags</option>
+              <option class="q_options" value="Users">Users</option>
+            </select>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!--<div *ngIf="($isLoggedIn | async) == false" class="auth-container">
+    <button (click)="login()" mat-raised-button id="login" class="">Login</button>
+
+  </div>
+  <div *ngIf="($isLoggedIn | async) == false" class="signUp">
+    <button (click)="signup()" mat-raised-button id="sign-up">Register</button>
+  </div>-->
+
+
+  <div class="user_actions" *ngIf="(isMobileDevice || isTabletDevice) && ($isLoggedIn | async) == false">
+    <button class="mobile-menu" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon style="color: white">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngIf="($isLoggedIn | async) == false" (click)="login()" class="">
+        <mat-icon>account_box</mat-icon>
+        Login
+      </button>
+      <button *ngIf="($isLoggedIn | async) == false" (click)="signup()" mat-menu-item>
+        <mat-icon>person_add</mat-icon>
+        Register
+      </button>
+    </mat-menu>
+  </div>
+
+
+  <div class="unregistered_actions" *ngIf="isDesktopDevice">
+    <button *ngIf="($isLoggedIn | async) == false" (click)="login()" mat-raised-button id="login" class="">
+      Login
+    </button>
+    <button *ngIf="($isLoggedIn | async) == false" (click)="signup()" mat-raised-button id="sign-up">Register</button>
+    <!--<button *ngIf="($isLoggedIn | async) == true" class="shadow" (click)="navigateUploadImage()" mat-flat-button>Submit a picture</button>-->
+    <button *ngIf="($isLoggedIn | async) == true"
+            (click)="navigateUploadImage()"
+            mat-icon-button>
+      <mat-icon matTooltip="Add your spectacular shot to your gallery."
+                matTooltipPosition="below"
+                style="color: white; font-size: 40px">add_a_photo</mat-icon>
+    </button>
+  </div>
+
+  <!--<div *ngIf="($isLoggedIn | async) == true" class="submit_image">
+    <button class="shadow" (click)="navigateUploadImage()" mat-flat-button>Submit a picture</button>
+  </div>-->
+
+
+  <div class="account_icon_container" *ngIf="($isLoggedIn | async) == true">
+    <!--<button class="shadow" (click)="navigateUploadImage()" mat-flat-button>Submit a picture</button>-->
+    <div class="msg" >
+      <span class="welcome_msg"
+            style="color: white; margin-left: 10%; font-size: 15px"
+            *ngIf="($isLoggedIn | async) == true && (isDesktopDevice || isTabletDevice)">
+      <strong>{{ "Hi, " + ($userName | async) || "User" }}</strong>
+    </span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon *ngIf="!($profileImage | async)"
+                style="color: white;font-size: 50px">account_circle
+      </mat-icon>
+
+      <img *ngIf="($profileImage | async)"
+           class="img shadow"
+           [src]="$profileImage | async">
+      <mat-menu #menu="matMenu">
+        <button (click)="navigateToUser()" mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>View profile</span>
+        </button>
+        <button *ngIf="isMobileDevice || isTabletDevice" (click)="navigateUploadImage()" mat-menu-item>
+          <mat-icon>add_a_photo</mat-icon>
+          <span>Submit your image</span>
+        </button>
+        <button (click)="navigateToSettings()" mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Account settings</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button (click)="logout()" mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </button>
+  </div>
+
+
+  <!--<div style="width: 33%"></div>-->
+  <!--<div *ngIf="filterable && searchOption !== 'Users'" class="open-filter-details">
+
+
+    <button class="expand_btn" style="color: white;" (click)="closeFilterDetails()" mat-icon-button>
+      <mat-icon style="color: white">expand_more</mat-icon>
+      <span style="color: white;">Search details </span>
+    </button>
+  </div>
+</div>-->
+<div class="container filterDetails" *ngIf="filterable && openCloseDetails">
+  <div *ngIf="searchOption === 'Tags'" class="center2" style="padding: 10px; display: flex; justify-content: center">
+    <section id="id_Section">
+      <ul class="align_ul" style="list-style-type: none;">
+        <li style="color: white; font-size: 18px; margin-bottom: 10px"><strong>Filter : </strong></li>
+        <li *ngFor="let timeFilter of filterOptions.timeFilterOptions "
+            style="color: white;">
+          <mat-checkbox [(ngModel)]="timeFilter.checked"
+                        (change)="updateAll($event, timeFilter)">
+            {{timeFilter.name}}
+          </mat-checkbox>
+        </li>
+      </ul>
+
+      <section style="display: flex; flex-direction: column">
+        <ul class="align_ul" style="list-style-type: none">
+          <li style="color: white; font-size: 18px; margin-bottom: 10px"><strong>Sort : </strong></li>
+          <li style="color: white">
+            <mat-checkbox [(ngModel)]="filterOptions.mostDownloads.checked">
+              {{filterOptions.mostDownloads.name}}
+            </mat-checkbox>
+          </li>
+          <li style="color: white">
+            <mat-checkbox [(ngModel)]="filterOptions.mostLiked.checked">
+              {{filterOptions.mostLiked.name}}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </div>
+</div>
+

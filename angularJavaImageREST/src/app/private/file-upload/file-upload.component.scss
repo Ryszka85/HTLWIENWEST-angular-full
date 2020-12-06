@@ -1,0 +1,164 @@
+#header {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+#close_btn {
+  background-color: red;
+  color: white;
+}
+
+//.cropper {
+//  width: 300px;
+//  height: 300px;
+//  display: flex;
+//}
+
+#link_ref {
+  font-size: 17px;
+  margin-top: 15px;
+}
+
+/*ngx-dropzone-preview {
+  background-color: #90e0ef;
+}*/
+
+mat-radio-button {
+
+}
+
+
+
+ngx-dropzone {
+  background-color: #90e0ef;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.cropped-image {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  .crop-image {
+    display: flex;
+    flex-direction: column;
+  }
+  .cropped {
+    margin-top: 10px;
+  }
+}
+
+.link_ref_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 17px;
+}
+
+
+
+#access-type {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  p {
+    margin-right: 10px;
+    font-size: 17px;
+  }
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+  }
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+}
+
+#url_input {
+  width: 100%;
+}
+
+//.link_reference {
+//  display: flex;
+//  flex-direction: row;
+//  align-items: center;
+//}
+
+.drop-zone {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.drop-zone {
+  height: 300px;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+}
+
+
+//.container {
+//  display: flex;
+//  min-height: 460px;
+//  flex-direction: column;
+//  text-align: center;
+//  justify-content: center;
+//
+//}
+
+.label-header {
+  margin-top: 4%;
+}
+
+.label-content {
+  margin-top: 30px;
+  margin-right: 70px;
+}
+
+.drop-label {
+  display: flex;
+}
+
+.list-item {
+  width: 270px;
+
+  text-align: left;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+
+.list {
+
+}
+
+@media screen and (min-width: 837px) {
+  .label-description {
+    display: grid;
+    grid-template-columns: 30%33%30%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  .label-description {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+  }
+}
+
+.action {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-start;
+}

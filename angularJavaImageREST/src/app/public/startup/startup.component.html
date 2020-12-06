@@ -1,0 +1,54 @@
+<app-search-toolbar [filterable]="false"></app-search-toolbar>
+
+<!--<app-bootstrap-playground></app-bootstrap-playground>-->
+
+<main>
+  <section class="banner" id="top">
+    <div class="container-banner">
+      <!--<div class="row">
+        <img class="logo" width="512px" height="512px" src="assets/Specshots-Logo.png">
+      </div>-->
+
+      <div class="row">
+        <div class="banner-caption">
+          <h1 style="font-size: 58px">SpecShots</h1>
+          <div class="line-dec"></div>
+          <h3>The most Spectacle Photography for You</h3>
+          <p>Here is some filler text to work with.</p>
+          <button id="btn" mat-stroked-button>Explore SpecShots</button>
+        </div>
+        <div [ngStyle]="
+        {
+        'position': 'absolute',
+        'right': isDesktopDeviceXl ? '25%' : isDesktopDeviceLg ? '15%' : '0'
+        }"
+             class="logo">
+          <img width="412px" height="412px" src="assets/Specshots-Logo.png">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container-1">
+    <div class="box-1">
+      <h3>High quality</h3>
+      <p>Internationalized and accessible components for everyone. Well tested to ensure performance and
+        reliability.</p>
+      <p>Straightforward APIs with consistent cross platform behaviour.</p>
+    </div>
+    <div class="box-2">
+      <h3>Versatile</h3>
+      <p>Provide tools that help developers build their own custom components with common interaction patterns.</p>
+      <p>Customizable within the bounds of the Material Design specification.</p>
+    </div>
+    <div class="box-3">
+      <h3>Box Three</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </div>
+</main>
+
+<!--<footer>
+
+</footer>-->
