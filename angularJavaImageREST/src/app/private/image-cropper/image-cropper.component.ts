@@ -47,7 +47,7 @@ export class ImageCropperComponent implements OnInit {
   }
 
   imageCropped($event: ImageCroppedEvent) {
-
+    console.log("from new branch")
     const width = $event.cropperPosition.x2 - $event.cropperPosition.x1;
     if (this.cropForView === 'Gallery')
       this.store.dispatch(new CropGalleryViewImage($event.base64));
