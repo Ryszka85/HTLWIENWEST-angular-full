@@ -20,7 +20,7 @@ export class ImageUploadService {
     request.append("urlReference", uploadModel.urlReference);
     request.append("isPublic", uploadModel.isPublic);
     request.append('galleryFile', uploadModel.galleryFile);
-    request.append("downloadFile", uploadModel.downloadFile)
+    request.append("downloadFile", uploadModel.downloadFile);
     console.log(uploadModel.urlReference);
     return this.http.post(
       this.UPLOAD_IMAGE, request,

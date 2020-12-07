@@ -1,7 +1,12 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import {NgxDropzoneChangeEvent} from "ngx-dropzone";
 import {Select, Store} from "@ngxs/store";
-import {CropDownloadViewImage, CropGalleryViewImage, UploadImage} from "../../shared/app-state/actions/image.action";
+import {
+  AsignBase64ToOriginalImage,
+  CropDownloadViewImage,
+  CropGalleryViewImage,
+  UploadImage
+} from "../../shared/app-state/actions/image.action";
 import {LoginStateModel} from "../../shared/app-state/states/login.state.model";
 import {switchMap, tap} from "rxjs/operators";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
@@ -55,9 +60,16 @@ export class FileUploadComponent implements OnInit {
   @Select(LoginStateModel.loggedInUser) $loggedUser;
   @Select(CropImageState.getData) $imageData;
   @Select(CropImageState.getCroppedDownloadImage) $croppedDownloadViewImage;
+  @Select(CropImageState.getGalleryFile) $galleryFile;
+
   isValidToUpload: boolean = false;
   canvasRotation: any;
   public displayCroppedImage: boolean = false;
+
+  originalFileDimensions = {
+    width: 0,
+    height: 0
+  };
 
 
   public device: string;
@@ -116,14 +128,19 @@ export class FileUploadComponent implements OnInit {
     this.isValidating = true;
     const typeIndex = $event.addedFiles[0].name.lastIndexOf('.');
     const type = $event.addedFiles[0].name.substr(typeIndex + 1);
-    if ((type === 'jpg' || type === 'png') && $event.addedFiles[0].size <= 5000000) {
+    console.log(type);
+    if ((type === 'jpg' || type === 'png' || type === 'jfif')) {
       let request = new FormData();
       request.append('file', $event.addedFiles[0]);
+
+
       this.uploadService.validateImage($event.addedFiles[0])
         .subscribe(value => {
           const message = value.message;
           console.log(value.status);
           if (value.status === 200) {
+            this.originalFileDimensions.width = value.width;
+            this.originalFileDimensions.height = value.height;
             this.files.push(...$event.addedFiles);
             this.isValidToUpload = true;
             this.isLinear = true;
@@ -136,7 +153,8 @@ export class FileUploadComponent implements OnInit {
               const base64Temp = e.target.result;
               this.croppedGalleryImage = base64Temp;
               this.croppedDownloadViewImage = base64Temp;
-              this.store.dispatch(new CropDownloadViewImage(this.croppedGalleryImage))
+              this.store.dispatch(new AsignBase64ToOriginalImage(base64Temp));
+              this.store.dispatch(new CropDownloadViewImage(this.croppedGalleryImage));
               this.store.dispatch(new CropGalleryViewImage(this.croppedDownloadViewImage))
                 .subscribe(value => {
                   // open imageCropper dialog(component) to let user decide
@@ -172,7 +190,7 @@ export class FileUploadComponent implements OnInit {
   public cropImageForDownloadView(): void {
     this.dialog.open(ImageCropperComponent, {
       data: {
-        img: this.store.selectSnapshot(CropImageState.getCroppedDownloadImage),
+        img: this.store.selectSnapshot(CropImageState.getData),
         width: 1200,
         height: 670, viewName: 'Download'
       }, height: '1000px'
@@ -182,12 +200,12 @@ export class FileUploadComponent implements OnInit {
   public cropImageForGallery(): void {
 
     const isMobile = this.device === Device.MOBILE;
-    const width = isMobile ? 150 : 500;
-    const height = isMobile ?  150 / 1.087 : 460;
+    const width = isMobile ? 100 : 500;
+    const height = isMobile ?  92 / 1.087 : 460;
     this.dialog.open(ImageCropperComponent, {
       data: {
         img: this.store.selectSnapshot(CropImageState.getData)
-        , width, height, viewName: 'Gallery'
+        , width, height, viewName: 'Gallery', imgDimensions: this.originalFileDimensions
       }, height: '1000px'
 
     });
@@ -212,7 +230,7 @@ export class FileUploadComponent implements OnInit {
     const isP = this.isPublic ? 'true' : 'false';
 
 
-    const galleryBase64 = this.store.selectSnapshot(CropImageState.getData);
+    const galleryBase64 = this.store.selectSnapshot(CropImageState.getGalleryFile);
     //cropped image to file(base64 to file)
     const imageBlob = Base64ToBlobConverter.dataURItoBlob(galleryBase64.substr(galleryBase64.lastIndexOf(',') + 1));
 

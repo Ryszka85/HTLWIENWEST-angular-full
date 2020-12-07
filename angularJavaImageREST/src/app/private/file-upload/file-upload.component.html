@@ -84,7 +84,7 @@
       <div *ngIf="displayCroppedImage" class="cropped">
         <img matTooltip="This is how your image will look like as a thumbnail."
              matTooltipPosition="below"
-             [src]="this.$imageData | async" />
+             [src]="this.$galleryFile | async" />
       </div>
     </div>
   </mat-step>
@@ -92,7 +92,7 @@
     <ng-template  matStepLabel>Edit image for the download view</ng-template>
     <div>
       <button (click)="cropImageForDownloadView()"
-              mat-button [disabled]="!(this.$imageData | async)"
+              mat-button [disabled]="!(this.$galleryFile | async)"
               matTooltip="Select the part of your image which will be displayed in the download view."
               matTooltipPosition="below"
               mat-raised-button>Edit</button>
@@ -109,7 +109,10 @@
   </mat-step>
   <mat-step >
     <form >
-      <ng-template matStepLabel>Upload file</ng-template>
+      <!--<ng-template matStepLabel>Upload file</ng-template>-->
+      <button mat-raised-button *ngIf="isValidToUpload && !(this.spinner | async)"
+              (click)="upload()"  mat-flat-button>Upload</button>
+      <mat-spinner *ngIf="this.spinner | async" ></mat-spinner>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
@@ -120,7 +123,5 @@
 <mat-divider></mat-divider>
 <div class="action" style="margin-top: 100px">
   <button id="close_btn" *ngIf="!(this.spinner | async)" mat-raised-button (click)="close()" style="margin-right: 5px"  mat-flat-button>Cancel</button>
-  <button mat-raised-button *ngIf="isValidToUpload && !(this.spinner | async)" (click)="upload()"  mat-flat-button>Upload</button>
-  <mat-spinner *ngIf="this.spinner | async" ></mat-spinner>
 
 </div>

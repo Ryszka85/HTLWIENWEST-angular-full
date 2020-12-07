@@ -22,6 +22,15 @@ export class ImageCropperComponent implements OnInit {
   cropped2: any;
   @Select(CropImageState.getData) $imageData;
 
+  cropper = {
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 0
+  };
+
+  resizedFactor: number = 0;
+
   constructor(@Inject(MAT_DIALOG_DATA) public $event: any,
               private dialogRef: MatDialogRef<ImageCropperComponent>,
               private store: Store,
@@ -31,13 +40,15 @@ export class ImageCropperComponent implements OnInit {
   ngOnInit(): void {
     this.croppedImage = this.$event.img;
     this.width = this.$event.width;
-    console.log(this.width)
+    console.log(this.width);
     this.height = this.$event.height;
-    console.log(this.height)
+    console.log(this.height);
     this.cropForView = this.$event.viewName;
   }
 
   imageCropped($event: ImageCroppedEvent) {
+
+    const width = $event.cropperPosition.x2 - $event.cropperPosition.x1;
     if (this.cropForView === 'Gallery')
       this.store.dispatch(new CropGalleryViewImage($event.base64));
     else

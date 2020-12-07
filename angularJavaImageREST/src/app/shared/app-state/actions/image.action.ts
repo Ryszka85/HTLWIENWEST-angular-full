@@ -76,6 +76,11 @@ export class CropGalleryViewImage {
   constructor(public data: string) { }
 }
 
+export class AsignBase64ToOriginalImage {
+  static readonly type = '[ImageAPI] Crop gallery temp view image';
+  constructor(public data: string) { }
+}
+
 export class SetCroppedOffsetValues {
   static readonly type = '[ImageAPI] Set cropped image values';
   constructor(public imgId: string,

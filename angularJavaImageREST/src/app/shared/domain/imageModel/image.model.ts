@@ -36,6 +36,8 @@ export class SetImageWithTags {
 export class CropImageModel {
   data: string;
   downloadViewFile?: string;
+  galleryFile?: string;
+  tempFile?: string;
 }
 
 export interface DownloadImageByIndividualResolution {

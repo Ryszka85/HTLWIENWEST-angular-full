@@ -6,7 +6,7 @@ import {TagModel} from "../../domain/tagModel/tag-model";
 import {QueryTagAction} from "../actions/query-tag-action";
 import {tap} from "rxjs/operators";
 import {CropImageModel, ImageModel} from "../../domain/imageModel/image.model";
-import {CropDownloadViewImage, CropGalleryViewImage} from "../actions/image.action";
+import {CropDownloadViewImage, CropGalleryViewImage, AsignBase64ToOriginalImage} from "../actions/image.action";
 import {ImagesByTagNameStateModel} from "../../domain/imageModel/ImagesByTagNameQuery";
 
 @State<CropImageModel>({
@@ -27,9 +27,31 @@ export class CropImageState {
   }
 
   @Selector()
+  static getTemp(state: CropImageModel): string {
+    return state.tempFile;
+  }
+
+
+  @Selector()
   static getData(state: CropImageModel): string {
     return state.data;
   }
+
+  @Selector()
+  static getGalleryFile(state: CropImageModel): string {
+    return state.galleryFile;
+  }
+
+  @Action(AsignBase64ToOriginalImage)
+  cropTempImage(ctx: StateContext<CropImageModel>, action: CropGalleryViewImage) {
+    let state = ctx.getState();
+    console.log(state);
+    ctx.patchState({
+      ...state,
+      data: action.data
+    })
+  }
+
 
   @Action(CropGalleryViewImage)
   cropImage(ctx: StateContext<CropImageModel>, action: CropGalleryViewImage) {
@@ -37,7 +59,7 @@ export class CropImageState {
     console.log(state);
     ctx.patchState({
       ...state,
-      data: action.data
+      galleryFile: action.data
     })
   }
 
