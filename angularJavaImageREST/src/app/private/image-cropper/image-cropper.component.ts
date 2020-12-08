@@ -7,6 +7,7 @@ import {CropDownloadViewImage, CropGalleryViewImage} from "../../shared/app-stat
 import {Device, DeviceObserverService} from "../../serviceV2/device-observer.service";
 import {MediaObserver} from "@angular/flex-layout";
 
+
 @Component({
   selector: 'app-image-cropper',
   templateUrl: './image-cropper.component.html',
@@ -55,7 +56,7 @@ export class ImageCropperComponent implements OnInit {
 
     this.croppedImage = this.$event.img;
     this.width = this.$event.width;
-    this.cropperObj.staticWidth = this.$event.width;
+    /*this.cropperObj.staticWidth = this.$event.width;*/
     /*this.media.asObservable().subscribe(media => {
       console.log(media[0].mqAlias);
     })*/
@@ -83,6 +84,18 @@ export class ImageCropperComponent implements OnInit {
           this.device = Device.TABLET;
         } else {
           this.device = Device.DESKTOP;
+          if (this.cropForView === 'Gallery') {
+            this.cropperObj.rotate = false;
+            this.cropperObj.staticHeight = 460;
+            this.cropperObj.staticWidth = 500;
+          } else {
+            this.cropperObj.rotate = false;
+            this.cropperObj.staticHeight = 670;
+            this.cropperObj.staticWidth = 1200;
+            this.cropperObj.resizeHeight = this.cropperObj.staticHeight;
+            this.cropperObj.resizeWidth = this.cropperObj.staticWidth;
+
+          }
         }
         this.isMobile = ((value === 'xs') && this.$event.imgDimensions.width > this.$event.imgDimensions.height);
       });
@@ -90,7 +103,7 @@ export class ImageCropperComponent implements OnInit {
     console.log(this.$event.imgDimensions);
     console.log(this.width);
     this.height = this.$event.height;
-    this.cropperObj.staticHeight = this.$event.height;
+    /*this.cropperObj.staticHeight = this.$event.height;*/
     console.log(this.height);
     this.cropForView = this.$event.viewName;
   }
@@ -99,32 +112,21 @@ export class ImageCropperComponent implements OnInit {
 
     if (this.cropperObj.isPortraitFormat == false && this.device === Device.MOBILE) {
 
-      console.log($event.cropperPosition.y1 * this.cropperObj.resizeFactor);
+      const offsetX1Factor = (this.$event.imgDimensions.height - 460) / (this.cropperObj.imgViewWidth - this.cropperObj.staticWidth);
+
+      const offsetY1Factor = (this.$event.imgDimensions.width - 500) / (this.cropperObj.imgViewHeight - this.cropperObj.staticHeight);
+
+
+      console.log((252 - $event.cropperPosition.x2));
+
+      console.log((252 - $event.cropperPosition.x1) * offsetX1Factor);
 
       console.log($event.cropperPosition.x1);
 
-      console.log($event.cropperPosition.x1 * this.cropperObj.resizeFactor);
+      console.log($event.cropperPosition.y1 * offsetY1Factor);
 
-      console.log((($event.cropperPosition.y2 - $event.cropperPosition.y1) * 3.357));
+      console.log($event.cropperPosition.y1);
 
-      console.log(($event.cropperPosition.x1 + ($event.cropperPosition.y2 - $event.cropperPosition.y1 )) * this.resizedFactor);
-
-      console.log(((($event.cropperPosition.x2 - ($event.cropperPosition.x2 - $event.cropperPosition.x1))) * this.resizedFactor) + ($event.cropperPosition.x2 - $event.cropperPosition.x1) * 3.357);
-
-      const test = (460 - (($event.cropperPosition.x2 - $event.cropperPosition.x1) * 3.357)) / 2;
-
-      console.log($event.cropperPosition.x1 + ($event.cropperPosition.x2 - $event.cropperPosition.x1) * 3.357);
-
-      console.log($event.cropperPosition.x2 - test);
-
-      // y1 querformat -> hochformat gedreht
-      console.log($event.cropperPosition.x2 * this.resizedFactor - 460);
-      // y2 querformat -> hochformat gedreht
-      console.log($event.cropperPosition.x2 * this.resizedFactor);
-      // x2 querformat -> hochformat gedreht
-      console.log($event.cropperPosition.y2 * this.resizedFactor);
-      // x1 querformat -> hochformat gedreht
-      console.log(($event.cropperPosition.y2 * this.resizedFactor) - 500);
     } else {
       // y1 querformat -> hochformat gedreht
       console.log($event.cropperPosition.x2 * this.resizedFactor - 500);
@@ -175,8 +177,8 @@ export class ImageCropperComponent implements OnInit {
 
 
   foo($event: Dimensions) {
-    this.cropperObj.imgViewHeight = this.$event.imgDimensions.height;
-    this.cropperObj.imgViewWidth = this.$event.imgDimensions.width;
+    this.cropperObj.imgViewHeight = $event.height;
+    this.cropperObj.imgViewWidth = $event.width;
     console.log(this.cropperObj.imgViewHeight);
     console.log(this.cropperObj.imgViewWidth);
     console.log($event.width);
