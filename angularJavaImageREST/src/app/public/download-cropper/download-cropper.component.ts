@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Select, Store} from "@ngxs/store";
-import {ImageCroppedEvent} from "ngx-image-cropper";
+import {Dimensions, ImageCroppedEvent} from "ngx-image-cropper";
 import {Subject} from "rxjs";
 import {GetBase64ForDownloadCropperState} from "../../shared/app-state/states/get-base64-for-downloadCropper.state";
 import {GetImageByIdState} from "../../shared/app-state/states/get-image-by-id.state";
@@ -88,7 +88,6 @@ export class DownloadCropperComponent implements OnInit {
   }
 
 
-
   public imageCropped($event: ImageCroppedEvent): void {
     const imageFileDetails = this.store.selectSnapshot(GetImageByIdState.getFileDetails);
     console.log("Starting Cropper method.....................................................");
@@ -105,10 +104,10 @@ export class DownloadCropperComponent implements OnInit {
       this.heightInputField.setValue(height.toFixed(2));
       this.wasCropped = false;
     }
-    if (this.loaded == 0) {
+    /*if (this.loaded == 0) {
       this.diffRatio = imageFileDetails.width / width;
       this.diffRatio.toFixed(2);
-    }
+    }*/
     // this.croppedWidth.next($event.cropperPosition.x2 - $event.cropperPosition.x1);
     // this.croppedHeight.next($event.cropperPosition.y2 - $event.cropperPosition.y1)
     this.loaded++;
@@ -165,5 +164,11 @@ export class DownloadCropperComponent implements OnInit {
     this.downloadService
       .downloadIndividualImage(croppedDownloadRequest, true)
       .subscribe(res => res)
+  }
+
+  foo($event: Dimensions) {
+    const imageFileDetails = this.store.selectSnapshot(GetImageByIdState.getFileDetails);
+    this.diffRatio = imageFileDetails.width / $event.width;
+    this.diffRatio.toFixed(2);
   }
 }

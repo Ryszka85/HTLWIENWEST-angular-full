@@ -3,16 +3,37 @@
   <button style="margin-left: 10px" color="primary" mat-raised-button (click)="close()">Crop image</button>
   {{width + ' - ' + height}}
 </div>
-<div  class="cropper">
-  <image-cropper
-    [imageBase64]="croppedImage"
-    [maintainAspectRatio]="true"
-    [resizeToWidth]="width"
-    [resizeToHeight]="height"
-    [cropperStaticWidth]="width"
-    [cropperStaticHeight]="height"
-    (imageCropped)="imageCropped($event)">
+<div class="cropper" *ngIf="cropperObj">
+
+  <!--<img src="{{croppedImage}}" />-->
+
+
+  <image-cropper #cropperComponent
+                 [canvasRotation]="cropperObj.rotate ? 1 : 0"
+                 [imageBase64]="croppedImage"
+                 [maintainAspectRatio]="true"
+                 [resizeToWidth]="cropperObj.resizeWidth"
+                 [resizeToHeight]="cropperObj.resizeHeight"
+                 (cropperReady)="foo($event)"
+                 (imageLoaded)="imageLoaded()"
+                 [cropperStaticWidth]="cropperObj.staticWidth"
+                 [cropperStaticHeight]="cropperObj.staticHeight"
+                 (imageCropped)="imageCropped($event)">
   </image-cropper>
+
+
+  <!--<image-cropper #cropperComponent
+                 [canvasRotation]="isMobile ? 1 : 0"
+                 [imageBase64]="croppedImage"
+                 [maintainAspectRatio]="true"
+                 [resizeToWidth]="width"
+                 [resizeToHeight]="height"
+                 (cropperReady)="foo($event)"
+                 (imageLoaded)="imageLoaded()"
+                 [cropperStaticWidth]="isMobile ? height : width"
+                 [cropperStaticHeight]="isMobile ? width : height"
+                 (imageCropped)="imageCropped($event)">
+  </image-cropper>-->
 </div>
 
 

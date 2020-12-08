@@ -188,11 +188,14 @@ export class FileUploadComponent implements OnInit {
   }
 
   public cropImageForDownloadView(): void {
+    const isMobile = this.device === Device.MOBILE;
+    const width = isMobile ? 250 : 1200;
+    const height = isMobile ?  width / 1.7910 : 670;
     this.dialog.open(ImageCropperComponent, {
       data: {
         img: this.store.selectSnapshot(CropImageState.getData),
-        width: 1200,
-        height: 670, viewName: 'Download'
+        width,
+        height, viewName: 'Download', imgDimensions: this.originalFileDimensions
       }, height: '1000px'
     });
   }
@@ -200,8 +203,9 @@ export class FileUploadComponent implements OnInit {
   public cropImageForGallery(): void {
 
     const isMobile = this.device === Device.MOBILE;
-    const width = isMobile ? 100 : 500;
-    const height = isMobile ?  92 / 1.087 : 460;
+    const isTablet = this.device === Device.TABLET;
+    const width = isMobile ? 150 : 500;
+    const height = isMobile ? width / 1.087 : 460;
     this.dialog.open(ImageCropperComponent, {
       data: {
         img: this.store.selectSnapshot(CropImageState.getData)
