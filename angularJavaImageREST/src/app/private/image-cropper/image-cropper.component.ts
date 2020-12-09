@@ -66,6 +66,8 @@ export class ImageCropperComponent implements OnInit {
 
     this.cropperObj.originalWidth = this.$event.imgDimensions.width;
     this.cropperObj.originalHeight = this.$event.imgDimensions.height;
+    this.cropperObj.resizeWidth = this.$event.width;
+    this.cropperObj.resizeHeight = this.$event.height;
     this.cropperObj.isPortraitFormat = this.cropperObj.originalWidth < this.cropperObj.originalHeight;
 
     this.deviceObserverService.getActiveDevice()
@@ -73,15 +75,24 @@ export class ImageCropperComponent implements OnInit {
         if (value === Device.MOBILE && this.cropperObj.isPortraitFormat === false) {
           this.device = Device.MOBILE;
           this.cropperObj.rotate = true;
+          this.cropperObj.staticHeight = 150;
+          this.cropperObj.staticWidth = (150 / (500 / 460));
+        } else if (value === Device.MOBILE && this.cropperObj.isPortraitFormat) {
+          this.device = Device.MOBILE;
+          this.cropperObj.rotate = false;
           this.cropperObj.staticHeight = (150 / (500 / 460));
           this.cropperObj.staticWidth = 150;
-        } else if (value === Device.TABLET) {
+
+          console.log(this.cropperObj.imgViewWidth);
+
+        }  else if (value === Device.TABLET) {
           this.device = Device.TABLET;
           this.cropperObj.rotate = false;
-          this.cropperObj.staticWidth = 250;
-          this.cropperObj.staticHeight = 250 / (500 / 460);
-        } else if (value === Device.TABLET) {
-          this.device = Device.TABLET;
+          this.cropperObj.rotate = false;
+          this.cropperObj.staticWidth = 200;
+          this.cropperObj.staticHeight = 200 / (500 / 460);
+
+          console.log(this.cropperObj.imgViewWidth);
         } else {
           this.device = Device.DESKTOP;
           if (this.cropForView === 'Gallery') {
@@ -112,30 +123,29 @@ export class ImageCropperComponent implements OnInit {
 
     if (this.cropperObj.isPortraitFormat == false && this.device === Device.MOBILE) {
 
-      const offsetX1Factor = (this.$event.imgDimensions.height - 460) / (this.cropperObj.imgViewWidth - this.cropperObj.staticWidth);
 
-      const offsetY1Factor = (this.$event.imgDimensions.width - 500) / (this.cropperObj.imgViewHeight - this.cropperObj.staticHeight);
-
-
-      console.log((252 - $event.cropperPosition.x2));
-
-      console.log((252 - $event.cropperPosition.x1) * offsetX1Factor);
+      console.log(this.cropperObj.resizeFactor);
 
       console.log($event.cropperPosition.x1);
 
-      console.log($event.cropperPosition.y1 * offsetY1Factor);
+      console.log(this.cropperObj.imgViewWidth - $event.cropperPosition.x2);
 
-      console.log($event.cropperPosition.y1);
+      console.log((this.cropperObj.imgViewWidth - $event.cropperPosition.x2) * this.cropperObj.resizeFactor);
+
+      console.log($event.cropperPosition.y1 * this.cropperObj.resizeFactor);
 
     } else {
-      // y1 querformat -> hochformat gedreht
-      console.log($event.cropperPosition.x2 * this.resizedFactor - 500);
-      // y2 querformat -> hochformat gedreht
-      console.log($event.cropperPosition.x2 * this.resizedFactor);
-      // x2 querformat -> hochformat gedreht
-      console.log($event.cropperPosition.y2 * this.resizedFactor);
-      // x1 querformat -> hochformat gedreht
-      console.log(($event.cropperPosition.y2 * this.resizedFactor) - 460);
+
+
+      console.log(this.cropperObj.resizeFactor);
+
+      console.log($event.cropperPosition.x1);
+
+      console.log($event.cropperPosition.x1 * this.cropperObj.resizeFactor);
+
+      console.log($event.cropperPosition.y1 * this.cropperObj.resizeFactor);
+
+      console.log($event.cropperPosition.y1);
     }
 
     if (this.cropForView === 'Gallery')
@@ -194,28 +204,37 @@ export class ImageCropperComponent implements OnInit {
 
 
       /*this.cropperObj.rotate = true;*/
-      this.cropperObj.staticWidth = 150;
+      this.cropperObj.staticWidth = (150 / (500 / 460));
       this.cropperObj.staticWidth.toFixed(0);
-      this.cropperObj.staticHeight = (150 / (500 / 460));
+      this.cropperObj.staticHeight = 150;
       this.cropperObj.resizeHeight = (150 / (500 / 460));
       this.cropperObj.resizeWidth = 150;
 
       this.isPortraitFormat = true;
       this.resizedFactor = this.$event.imgDimensions.width / $event.height;
       console.log(this.resizedFactor);
-      this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.height;
+      this.cropperObj.resizeFactor = this.cropperObj.originalWidth / $event.height;
       console.log(this.cropperObj.resizeFactor);
 
-    } else if (this.device === Device.TABLET) {
+    } else if (this.device === Device.TABLET && this.cropperObj.isPortraitFormat) {
       console.log("TABLET!!!!!!");
-      this.cropperObj.rotate = false;
-      this.cropperObj.staticWidth = 350;
-      this.cropperObj.staticHeight = 350 / (500 / 460);
-      this.cropperObj.resizeHeight = 350 / (500 / 460);
+      this.cropperObj.rotate = true;
+      this.cropperObj.staticWidth = 200;
+      this.cropperObj.staticHeight = 200 ;
+      this.cropperObj.resizeHeight = 200 / (500 / 460);
       this.cropperObj.resizeWidth = 350;
       this.resizedFactor = this.$event.imgDimensions.width / $event.width;
       this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
-    } else {
+    } else if (this.device === Device.TABLET) {
+      console.log("TABLET!!!!!!");
+      this.cropperObj.rotate = false;
+      this.cropperObj.staticWidth = 200;
+      this.cropperObj.staticHeight = 200 / (500 / 460);
+      this.cropperObj.resizeHeight = 200 / (500 / 460);
+      this.cropperObj.resizeWidth = 350;
+      this.resizedFactor = this.$event.imgDimensions.width / $event.width;
+      this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
+    }  else {
       this.resizedFactor = this.$event.imgDimensions.width / $event.width;
       this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
     }
