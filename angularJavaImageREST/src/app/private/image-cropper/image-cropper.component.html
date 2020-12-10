@@ -3,15 +3,20 @@
   <button style="margin-left: 10px" color="primary" mat-raised-button (click)="close()">Crop image</button>
   {{width + ' - ' + height}}
 </div>
-<div  class="cropper">
-  <image-cropper
-    [imageBase64]="croppedImage"
-    [maintainAspectRatio]="true"
-    [resizeToWidth]="width"
-    [resizeToHeight]="height"
-    [cropperStaticWidth]="width"
-    [cropperStaticHeight]="height"
-    (imageCropped)="imageCropped($event)">
+<div style="" class="cropper" *ngIf="cropperObj">
+  <image-cropper *ngIf="disable == false"
+                 [canvasRotation]="cropperObj.rotate ? 1 : 0"
+                 [imageBase64]="croppedImage"
+                 [maintainAspectRatio]="true"
+                 [resizeToWidth]="cropperObj.resizeWidth"
+                 [resizeToHeight]="cropperObj.resizeHeight"
+                 (cropperReady)="getDimensionFromCropper($event)"
+                 (imageLoaded)="imageLoaded()"
+                 [cropper]="cropper"
+                 [cropperStaticWidth]="cropperObj.staticWidth"
+                 [cropperStaticHeight]="cropperObj.staticHeight"
+                 (imageCropped)="imageCropped($event)"
+                  [cropperMinWidth]="150" [cropperMinHeight]="138">
   </image-cropper>
 </div>
 

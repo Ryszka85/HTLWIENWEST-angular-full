@@ -102,7 +102,7 @@
       <div *ngIf="!displayCroppedImage" style="width: 500px; height: 460px"></div>
       <div *ngIf="displayCroppedImage" class="cropped">
         <img matTooltip="This is how your image will look like as a thumbnail."
-             matTooltipPosition="below"
+             matTooltipPosition="below" height="390"
              [src]="this.$croppedDownloadViewImage | async" />
       </div>
     </div>

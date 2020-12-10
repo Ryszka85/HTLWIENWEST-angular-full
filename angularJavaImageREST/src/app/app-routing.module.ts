@@ -16,6 +16,7 @@ import {DownloadCropperComponent} from "./public/download-cropper/download-cropp
 import {CropAndDownloadResolverService} from "./serviceV2/crop-and-download-resolver.service";
 import {StartupComponent} from "./public/startup/startup.component";
 import {NotFoundPageComponent} from "./public/not-found-page/not-found-page.component";
+import {ImageCropperComponent} from "./private/image-cropper/image-cropper.component";
 
 
 const routes: Routes = [
