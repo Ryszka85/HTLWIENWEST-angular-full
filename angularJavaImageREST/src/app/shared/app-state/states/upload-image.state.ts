@@ -42,6 +42,7 @@ export class UploadImageState {
             ...state,
             userId: action.uploadModel.userId,
             orgFile: action.uploadModel.orgFile,
+            galleryFile: action.uploadModel.galleryFile,
             downloadFile: action.uploadModel.downloadFile,
             status: response.status === 200
           })

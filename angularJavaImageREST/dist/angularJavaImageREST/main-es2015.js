@@ -1722,7 +1722,7 @@ class FileUploadComponent {
         this.displayCroppedImage = false;
         this.formGroup = this.formBuilder
             .group({ url: this.imageUrlReference });
-        this.foo = this.formBuilder
+        this.getDimensionFromCropper = this.formBuilder
             .group({ isPublic: this.fooControl });
         this.firstFormGroup = this.formBuilder.group({
             uploadCtr: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_7__["Validators"].required]
@@ -4478,7 +4478,7 @@ class ImageByTagComponent {
         this.store = store;
         this.service = service;
         this.deviceService = deviceService;
-        this.foo = "IHUTiYJ6Wdk.jpg";
+        this.getDimensionFromCropper = "IHUTiYJ6Wdk.jpg";
     }
     ngOnInit() {
         console.log(this.deviceService.isMobile());
@@ -7694,7 +7694,7 @@ class ImageContentComponent {
         this.panelOpenState = false;
         this.hover = false;
         this.editable = false;
-        this.test = new Array();
+        this.setCropperObjectWithMinimumProperties = new Array();
         this.end = false;
         this.offset = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.evenRowLimit = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();

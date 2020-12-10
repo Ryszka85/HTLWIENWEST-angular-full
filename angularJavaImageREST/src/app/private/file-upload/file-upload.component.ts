@@ -32,6 +32,8 @@ import {Subject} from "rxjs";
 import {ImageUploadService} from "../../serviceV2/image-upload.service";
 import {MediaProcessorService} from "../../serviceV2/media-processor.service";
 import {Device, DeviceObserverService} from "../../serviceV2/device-observer.service";
+import {MediaObserver} from "@angular/flex-layout";
+import {PassDataToDialogAction} from "../../shared/app-state/actions/pass-data-to-dialog.action";
 
 
 @Component({
@@ -62,6 +64,7 @@ export class FileUploadComponent implements OnInit {
   @Select(CropImageState.getCroppedDownloadImage) $croppedDownloadViewImage;
   @Select(CropImageState.getGalleryFile) $galleryFile;
 
+
   isValidToUpload: boolean = false;
   canvasRotation: any;
   public displayCroppedImage: boolean = false;
@@ -85,6 +88,7 @@ export class FileUploadComponent implements OnInit {
               private http: HttpClient,
               private dialogRef2: MatDialogRef<ImageCropperComponent>,
               public media: MediaProcessorService,
+              private media2: MediaObserver,
               private  uploadService: ImageUploadService,
               public deviceObserverService: DeviceObserverService) {
     this.formGroup = this.formBuilder
@@ -95,6 +99,11 @@ export class FileUploadComponent implements OnInit {
     this.firstFormGroup = this.formBuilder.group({
       uploadCtr: ['', Validators.required]
     })
+
+    /*this.media2.asObservable()
+      .subscribe(value => {
+        console.log(value[0].mqAlias);
+      })*/
 
   }
 
@@ -190,14 +199,42 @@ export class FileUploadComponent implements OnInit {
   public cropImageForDownloadView(): void {
     const isMobile = this.device === Device.MOBILE;
     const width = isMobile ? 250 : 1200;
-    const height = isMobile ?  width / 1.7910 : 670;
-    this.dialog.open(ImageCropperComponent, {
-      data: {
-        img: this.store.selectSnapshot(CropImageState.getData),
-        width,
-        height, viewName: 'Download', imgDimensions: this.originalFileDimensions
-      }, height: '1000px'
-    });
+    const height = isMobile ? width / 1.7910 : 670;
+
+    this.store.dispatch(new PassDataToDialogAction(
+      {
+        imgData: this.store.selectSnapshot(CropImageState.getData),
+        resizeWidth: width,
+        resizeHeight: height,
+        viewName: 'Download',
+        imgDimensions: {
+          originalWidth: this.originalFileDimensions.width, originalHeight: this.originalFileDimensions.height
+        }
+      }
+    ));
+
+    if (this.device === Device.TABLET || this.device == Device.MOBILE) {
+      this.dialog.open(ImageCropperComponent, {
+        data: {
+          img: this.store.selectSnapshot(CropImageState.getData),
+          width,
+          height, viewName: 'Download', imgDimensions: this.originalFileDimensions
+        },
+        height: '1000px',
+        width: '100vw',
+        maxWidth: '100vw'
+      });
+    } else {
+      this.dialog.open(ImageCropperComponent, {
+        data: {
+          img: this.store.selectSnapshot(CropImageState.getData),
+          width,
+          height, viewName: 'Download', imgDimensions: this.originalFileDimensions
+        },
+        height: '1000px'
+      });
+    }
+
   }
 
   public cropImageForGallery(): void {
@@ -206,13 +243,44 @@ export class FileUploadComponent implements OnInit {
     const isTablet = this.device === Device.TABLET;
     const width = isMobile ? 150 : 500;
     const height = isMobile ? width / 1.087 : 460;
-    this.dialog.open(ImageCropperComponent, {
-      data: {
-        img: this.store.selectSnapshot(CropImageState.getData)
-        , width, height, viewName: 'Gallery', imgDimensions: this.originalFileDimensions
-      }, height: '1000px'
+    this.store.dispatch(new PassDataToDialogAction(
+      {
+        imgData: this.store.selectSnapshot(CropImageState.getData),
+        resizeWidth: width,
+        resizeHeight: height,
+        viewName: 'Gallery',
+        imgDimensions: {
+          originalWidth: this.originalFileDimensions.width, originalHeight: this.originalFileDimensions.height
+        }
+      }
+    ));
 
-    });
+
+    if (this.device === Device.TABLET || this.device == Device.MOBILE) {
+      this.dialog.open(ImageCropperComponent, {
+        data: {
+          img: this.store.selectSnapshot(CropImageState.getData),
+          width,
+          height,
+          viewName: 'Gallery',
+          imgDimensions: this.originalFileDimensions
+        },
+        height: '1000px',
+        width: '100vw',
+        maxWidth: '100vw'
+      });
+    } else {
+      this.dialog.open(ImageCropperComponent, {
+        data: {
+          img: this.store.selectSnapshot(CropImageState.getData),
+          width,
+          height,
+          viewName: 'Gallery',
+          imgDimensions: this.originalFileDimensions
+        },
+        height: '1000px'
+      })
+    }
     this.displayCroppedImage = true;
     // this.store.dispatch(new CropGalleryViewImage(this.croppedGalleryImage))
     //   .subscribe(value => console.log(value));
@@ -240,14 +308,14 @@ export class FileUploadComponent implements OnInit {
 
     const imageFile = new File([imageBlob],
       "cropped-" + this.files[0].name,
-      { type: 'image/jpeg' });
+      {type: 'image/jpeg'});
 
 
     const downloadBase64 = this.store.selectSnapshot(CropImageState.getCroppedDownloadImage);
     const downloadBlob = Base64ToBlobConverter.dataURItoBlob(downloadBase64.substr(downloadBase64.lastIndexOf(',') + 1));
     const downloadImageFile = new File([downloadBlob],
       "cropped-" + this.files[0].name,
-      { type: 'image/jpeg' });
+      {type: 'image/jpeg'});
 
     // setting response object with needed values
     const uploadModel: UploadImageModel = {
@@ -279,6 +347,8 @@ export class FileUploadComponent implements OnInit {
           );
           this.spinner.next(false);
           this.store.dispatch(new CropGalleryViewImage(null))
+          this.store.dispatch(new CropDownloadViewImage(null))
+          this.store.dispatch(new AsignBase64ToOriginalImage(null))
         }
         // window.location.reload();
       }, error => {
@@ -333,6 +403,7 @@ export class FileUploadComponent implements OnInit {
   //   console.log(this.imageChangedEvent)
   // }
   cropped2: any;
+
   fileChangeEvent($event: Event) {
     this.imageChangedEvent = $event;
   }
