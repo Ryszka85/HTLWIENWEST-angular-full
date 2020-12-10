@@ -89,6 +89,7 @@
                    [maintainAspectRatio]="true"
                    [cropper]="cropper"
                    (imageLoaded)="imageLoaded()"
+                   (cropperReady)="foo($event)"
                    [aspectRatio]="$ratio | async"
                    (imageCropped)="imageCropped($event)">
     </image-cropper>

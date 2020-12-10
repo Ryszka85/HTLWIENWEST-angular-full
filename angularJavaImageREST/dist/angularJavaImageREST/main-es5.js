@@ -3140,7 +3140,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.formGroup = this.formBuilder.group({
           url: this.imageUrlReference
         });
-        this.foo = this.formBuilder.group({
+        this.getDimensionFromCropper = this.formBuilder.group({
           isPublic: this.fooControl
         });
         this.firstFormGroup = this.formBuilder.group({
@@ -8736,7 +8736,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.store = store;
         this.service = service;
         this.deviceService = deviceService;
-        this.foo = "IHUTiYJ6Wdk.jpg";
+        this.getDimensionFromCropper = "IHUTiYJ6Wdk.jpg";
       }
 
       _createClass(ImageByTagComponent, [{
@@ -14752,7 +14752,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.panelOpenState = false;
         this.hover = false;
         this.editable = false;
-        this.test = new Array();
+        this.setCropperObjectWithMinimumProperties = new Array();
         this.end = false;
         this.offset = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         this.evenRowLimit = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();

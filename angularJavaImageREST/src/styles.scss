@@ -15,6 +15,10 @@
   background-color:red;
 }
 
+.full-width-dialog .mat-dialog-container {
+  max-width: 100vw !important;
+}
+
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
   border-color:red;
 }
