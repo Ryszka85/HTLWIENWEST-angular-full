@@ -8,13 +8,16 @@ import {ImageFileDetails, ImageDownloadResponse} from "../shared/domain/imageMod
 import {CroppedDownloadRequest} from "../shared/domain/http/req/CroppedDownloadRequest";
 import {conditionallyCreateMapObjectLiteral} from "@angular/compiler/src/render3/view/util";
 import {BlobToBase64Pipe} from "../shared/util/blob-to-base64-pipe";
+import {GetImageByIdState} from "../shared/app-state/states/get-image-by-id.state";
+import {Store} from "@ngxs/store";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageDownloadService {
   constructor(private http: HttpClient,
-              private base64Pipe: BlobToBase64Pipe) { }
+              private base64Pipe: BlobToBase64Pipe, private store: Store) {
+  }
 
   public static readonly DOWNLOAD_BY_API_RESOLUTION_URL = environment.apiUrl + "library/download/file/";
   public static readonly DOWNLOAD_BY_CROPPED_RESOLUTION_URL = environment.apiUrl + "library/download/cropped/file/";
@@ -31,10 +34,8 @@ export class ImageDownloadService {
 
   public downloadIndividualImage(croppedDetails: CroppedDownloadRequest |
     DownloadImageByIndividualResolution, wasCropped: boolean): Observable<string> {
-    console.log("seas");
     const url = wasCropped ? ImageDownloadService.DOWNLOAD_BY_CROPPED_RESOLUTION_URL :
       ImageDownloadService.DOWNLOAD_BY_INDIVIDUAL_RESOLUTION_URL;
-    console.log(url);
     return this.base64Pipe.getBase64(this.http
        .post(
          url,
