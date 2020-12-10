@@ -61,13 +61,6 @@ export class ImageCropperComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.media.asObservable().subscribe(console.log)
-
-
-    console.log(this.store.selectSnapshot(PassDataToCropperDialogState.getComponentData));
-
-
     const passedData = this.store.selectSnapshot(PassDataToCropperDialogState.getComponentData);
     this.cropperObj.base64 = passedData.imgData;
 
@@ -84,35 +77,16 @@ export class ImageCropperComponent implements OnInit {
 
     this.deviceObserverService.getActiveDevice()
       .subscribe(value => {
-        console.log(this.device);
-        console.log(this.device !== this.device);
         if (value === Device.MOBILE) {
           this.device = Device.MOBILE;
-          this.cropperObj.staticWidth = this.getStaticCropperWidthByViewAndDevice();
-          this.cropperObj.staticHeight = this.getStaticCropperWidthByViewAndDevice() / this.getRatioByView();
-
-          /* this.device = Device.MOBILE;
-           this.disable = false;
-
-           this.cropperObj.rotate = true;
-           this.cropperObj.staticHeight = 150;
-           this.cropperObj.staticWidth = (150 / (500 / 460));
-           this.cropperDimensions.logDimensions();*/
-
-        }  else if (value === Device.TABLET) {
+        } else if (value === Device.TABLET) {
           this.device = Device.TABLET;
-
-          this.cropperObj.staticWidth = this.getStaticCropperWidthByViewAndDevice();
-          this.cropperObj.staticHeight = this.getStaticCropperWidthByViewAndDevice() / this.getRatioByView();
 
         } else {
           this.device = Device.DESKTOP;
-          if (this.cropForView === 'Gallery') {
-            this.cropperObj.rotate = false;
-            this.cropperObj.staticHeight = 460;
-            this.cropperObj.staticWidth = 500;
-          }
         }
+        this.cropperObj.staticWidth = this.getStaticCropperWidthByViewAndDevice();
+        this.cropperObj.staticHeight = this.getStaticCropperWidthByViewAndDevice() / this.getRatioByView();
         this.isMobile = ((value === 'xs') && this.$event.imgDimensions.width > this.$event.imgDimensions.height);
       });
 
@@ -125,35 +99,6 @@ export class ImageCropperComponent implements OnInit {
   }
 
   imageCropped($event: ImageCroppedEvent) {
-
-    if (this.cropperObj.isPortraitFormat == false && this.device === Device.MOBILE) {
-
-
-
-
-      /*console.log(this.cropperObj.resizeFactor);
-
-      console.log($event.cropperPosition.x1);
-
-      console.log(this.cropperObj.imgViewWidth - $event.cropperPosition.x2);
-
-      console.log((this.cropperObj.imgViewWidth - $event.cropperPosition.x2) * this.cropperObj.resizeFactor);
-
-      console.log($event.cropperPosition.y1 * this.cropperObj.resizeFactor);
-
-      console.log(this.cropperDimensions.getCropperXAndYDistance().x);
-
-      console.log(this.cropperDimensions.getCropperXAndYDistance().x * this.cropperObj.resizeFactor);
-
-      console.log(this.cropperDimensions.getCropperXAndYDistance().y);
-
-      console.log(this.cropperDimensions.getCropperXAndYDistance().y * this.cropperObj.resizeFactor);*/
-
-    } else {
-
-
-    }
-
     if (this.cropForView === 'Gallery') {
       this.store.dispatch(new CropGalleryViewImage($event.base64));
     } else
@@ -161,20 +106,7 @@ export class ImageCropperComponent implements OnInit {
   }
 
 
-
   imageLoaded() {
-
-    console.log("HALLLLLOOOO???");
-/*
-    setTimeout(() => {
-      this.cropper = {
-        x1: 0,
-        y1: 0,
-        x2: this.getStaticCropperWidthByViewAndDevice(),
-        y2: this.getStaticCropperWidthByViewAndDevice() / this.getRatioByView()
-      };
-      /!*this.cropperDimensions = new CropperDimension(this.cropper);*!/
-    });*/
   }
 
 
@@ -184,31 +116,13 @@ export class ImageCropperComponent implements OnInit {
 
 
   getDimensionFromCropper($event: Dimensions) {
-
-
-    console.log("get dimensions function");
-
-
     this.cropperObj.imgViewHeight = $event.height;
     this.cropperObj.imgViewWidth = $event.width;
 
-    if (this.device === Device.MOBILE) {
-      this.device = Device.MOBILE;
-      this.cropperObj.staticWidth = this.getStaticCropperWidthByViewAndDevice();
-      this.cropperObj.staticHeight = this.getStaticCropperWidthByViewAndDevice() / this.getRatioByView();
-      this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
-
-    } else if (this.device === Device.TABLET) {
-      console.log("TABLET!!!!!!");
-      const ratioByView = this.getRatioByView();
-      this.cropperObj.staticWidth = this.getStaticCropperWidthByViewAndDevice();
-      this.cropperObj.staticHeight = this.getStaticCropperWidthByViewAndDevice() / ratioByView;
-      this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
-    } else {
-      this.resizedFactor = this.$event.imgDimensions.width / $event.width;
-      this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
-
-    }
+    this.cropperObj.staticWidth = this.getStaticCropperWidthByViewAndDevice();
+    this.cropperObj.staticHeight = this.getStaticCropperWidthByViewAndDevice() / this.getRatioByView();
+    this.resizedFactor = this.$event.imgDimensions.width / $event.width;
+    this.cropperObj.resizeFactor = this.$event.imgDimensions.width / $event.width;
 
     this.cropperObj.resizeWidth = this.getDesktopWidthByView();
     this.cropperObj.resizeHeight = this.getDesktopHeightByView();
