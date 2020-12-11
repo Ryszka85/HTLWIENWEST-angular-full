@@ -34,7 +34,7 @@
         </mat-form-field>
 
 
-        <button *ngIf="finishedLoadingImage || isDownLoadingImage !== null" class="download-btn"
+        <button *ngIf="finishedLoadingImage || isDownLoadingImage !== null || isDownLoadingImage === false" class="download-btn"
                 [matMenuTriggerFor]="menu" (onMenuOpen)="cropAndDownload(input.value, input2.value)" mat-raised-button>
           Download
         </button>
