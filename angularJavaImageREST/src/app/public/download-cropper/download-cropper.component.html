@@ -34,7 +34,7 @@
         </mat-form-field>
 
 
-        <button *ngIf="finishedLoadingImage || isDownLoadingImage !== null || isDownLoadingImage === false" class="download-btn"
+        <button *ngIf="showSpinner === false" class="download-btn"
                 [matMenuTriggerFor]="menu" (onMenuOpen)="cropAndDownload(input.value, input2.value)" mat-raised-button>
           Download
         </button>
@@ -49,14 +49,13 @@
           </div>
 
         </mat-menu>
-        <div class="" *ngIf="!finishedLoadingImage || isDownLoadingImage">
+        <div class="" *ngIf="showSpinner">
           <div class="load-image loading" style="margin: 0 auto;
   display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px">
             <mat-spinner diameter='50'></mat-spinner>
             <span style="font-size: 16px; margin-top: 20px">
               <strong style="color: #A9A9A9">
-                {{isDownLoadingImage ? 'Downloading image. This can take a while' :
-                !finishedLoadingImage ? 'Loading image. This can take a while' : ''}}
+                {{'Processing request. This can take a while..'}}
               </strong>
             </span>
           </div>

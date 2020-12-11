@@ -11,13 +11,15 @@
   position: relative;
   /*padding: 50px;*/
 }
- .example-sidenav {
+
+@media screen and (min-width: 600px) {
+  .example-sidenav {
     display: grid;
-    place-items: center;
-    padding: 20px;
+
+    padding: 40px;
     grid-template:
       "details" auto
-     / 1fr;
+     / auto;
     background-color: white;
     border: none;
     box-shadow: 1.3px 12px 30px rgba(0, 0, 0, 0.12),
@@ -26,6 +28,15 @@
     8.9px 4px 6px rgba(0, 0, 0, 0.06),
     10.1px 2px 5px rgba(0, 0, 0, 0.04);
   }
+}
+
+@media screen and (min-width: 0px) and (max-width: 599.98px) {
+   .example-sidenav {
+     width: 150px;
+   }
+}
+
+
 
 
 .details {
@@ -43,10 +54,21 @@
       "download-button" 0.3fr
       "loading";
   place-items: center;
-  grid-template-columns: minmax(200px, 1fr);
   gap: 15px;
-  width: 100%;
-  min-width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .details {
+    grid-template-columns: minmax(200px, 1fr);
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 599.98px) {
+  .details {
+    width: 100px;
+  }
 }
 
 /*@media screen and (min-width: 960px) {
@@ -78,15 +100,15 @@
 }
 
 
-.example-sidenav-content {
+/*.example-sidenav-content {
   display: grid;
   place-items: flex-start;
   height: 100%;
   width: 100%;
-  /*display: flex;
+  !*display: flex;
   align-items: center;
-  justify-content: center;*/
-}
+  justify-content: center;*!
+}*/
 
 .cropper {
   position: relative;
@@ -132,7 +154,7 @@
   display: grid;
   place-items: center;
   color: white;
-  margin-top: 20px;
+
   margin-bottom: 15px;
   padding: 10px;
   height: 60px;
