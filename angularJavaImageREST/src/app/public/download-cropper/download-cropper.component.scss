@@ -1,3 +1,191 @@
 .hoverable:hover {
   background: #eeeeee;
 }
+
+.example-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.cropper {
+  position: relative;
+  /*padding: 50px;*/
+}
+
+@media screen and (min-width: 600px) and (max-width: 959.98px) {
+  .example-sidenav {
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    width: 200px;
+    background-color: white;
+    border: none;
+    box-shadow: 1.3px 12px 30px rgba(0, 0, 0, 0.12),
+    2.5px 10px 20px rgba(0, 0, 0, 0.10),
+    4.7px 8px 10px rgba(0, 0, 0, 0.08),
+    8.9px 4px 6px rgba(0, 0, 0, 0.06),
+    10.1px 2px 5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959.98px) {
+  .details {
+    display: grid;
+    grid-template:
+      "icon" 1fr
+      "width" 0.3fr
+      "height" 0.3fr
+      "download-button" 0.3fr
+      "loading";
+    place-items: center;
+    grid-template-columns: minmax(150px, 1fr);
+    gap: 15px;
+    /*width: 100%;
+    min-width: 100%;*/
+  }
+}
+@media screen and (min-width: 960px) {
+  .details {
+    display: grid;
+    grid-template:
+      "icon" 1fr
+      "title" auto
+      "divider"
+      "width" 0.3fr
+      "height" 0.3fr
+      "download-button" 0.3fr
+      "loading";
+    place-items: center;
+    grid-template-columns: minmax(200px, 1fr);
+    gap: 15px;
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .example-sidenav {
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    width: 400px;
+    background-color: white;
+    border: none;
+    box-shadow: 1.3px 12px 30px rgba(0, 0, 0, 0.12),
+    2.5px 10px 20px rgba(0, 0, 0, 0.10),
+    4.7px 8px 10px rgba(0, 0, 0, 0.08),
+    8.9px 4px 6px rgba(0, 0, 0, 0.06),
+    10.1px 2px 5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.mat-form-field-appearance-outline {
+  outline-color: white;
+}
+
+.width {
+  grid-area: width;
+}
+
+.height {
+  grid-area: height;
+}
+
+
+.example-sidenav-content {
+  display: grid;
+  place-items: flex-start;
+  height: 100%;
+  width: 100%;
+  /*display: flex;
+  align-items: center;
+  justify-content: center;*/
+}
+
+.cropper {
+  position: relative;
+  padding: 30px;
+}
+
+.overlay {
+  display: block;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  left: 0;
+
+  margin-bottom: 50px;
+}
+
+.loading {
+  grid-area: loading;
+}
+
+.title {
+  grid-area: title;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.more-icon {
+  /*margin-bottom: 70px;*/
+  transform: scale(2);
+}
+
+.title-divider {
+  grid-area: divider;
+  width: 70%;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding: 10px;
+  height: 60px;
+  width: 60px;
+  background-color: #D7AB3E;
+  border-radius: 100%;
+  box-shadow: 1.3px 12px 30px rgba(0, 0, 0, 0.12),
+  2.5px 10px 20px rgba(0, 0, 0, 0.10),
+  4.7px 8px 10px rgba(0, 0, 0, 0.08),
+  8.9px 4px 6px rgba(0, 0, 0, 0.06),
+  10.1px 2px 5px rgba(0, 0, 0, 0.04);
+  /*background-image: url('~src/assets/Specshots-Logo.png');*/
+}
+
+.icon .mat-icon {
+  grid-area: icon;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 50px;
+}
+
+.download-btn {
+  box-shadow: 1.3px 12px 30px rgba(0, 0, 0, 0.12),
+  2.5px 10px 20px rgba(0, 0, 0, 0.10),
+  4.7px 8px 10px rgba(0, 0, 0, 0.08),
+  8.9px 4px 6px rgba(0, 0, 0, 0.06),
+  10.1px 2px 5px rgba(0, 0, 0, 0.04);
+  width: 120px;
+  background-color: #F65767;
+  margin-top: 50px;
+  color: white;
+  grid-area: download-button;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+}
+
+.white-color {
+  color: black;
+}

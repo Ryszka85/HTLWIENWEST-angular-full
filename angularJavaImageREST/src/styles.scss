@@ -19,6 +19,10 @@
   max-width: 100vw !important;
 }
 
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: black;
+}
+
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
   border-color:red;
 }

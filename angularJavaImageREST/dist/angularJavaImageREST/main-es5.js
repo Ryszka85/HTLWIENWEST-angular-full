@@ -5094,7 +5094,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.dialog = dialog;
         this.service = service;
         this.downloadService = downloadService;
-        this.showDimensions = false;
+        this.finishedLoadingImage = false;
         this.croppedWidth = false;
         this.croppedHeight = false;
         this.loaded = 0;

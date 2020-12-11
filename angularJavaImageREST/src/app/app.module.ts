@@ -98,6 +98,9 @@ import {BootstrapPlaygroundComponent} from './public/bootstrap-playground/bootst
 import {FlexModule} from "@angular/flex-layout";
 import {ChangeEmailThirdPartyComponent} from './private/change-email-third-party/change-email-third-party.component';
 import {PassDataToCropperDialogState} from "./shared/app-state/states/pass-data-to-cropper-dialog.state";
+import { CropperDetailsBarComponent } from './public/cropper-details-bar/cropper-details-bar.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -126,13 +129,16 @@ import {PassDataToCropperDialogState} from "./shared/app-state/states/pass-data-
     SetResolutionDownloadDialogComponent,
     NotFoundPageComponent,
     BootstrapPlaygroundComponent,
-    ChangeEmailThirdPartyComponent
+    ChangeEmailThirdPartyComponent,
+    CropperDetailsBarComponent
   ],
   imports: [
     BrowserModule,
     FileSaverModule,
+    MatSidenavModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatBadgeModule,
     MatExpansionModule,
     HammerModule,
     ImageCropperModule,

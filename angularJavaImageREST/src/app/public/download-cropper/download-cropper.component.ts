@@ -35,7 +35,8 @@ export class DownloadCropperComponent implements OnInit {
   public width: number;
   public height: number;
   public diffRatio: number;
-  public showDimensions: boolean = false;
+  public finishedLoadingImage: boolean = false;
+  public isDownLoadingImage: boolean = null;
   public widthChanged: number;
   public croppedWidth: boolean = false;
   public croppedHeight: boolean = false;
@@ -51,6 +52,7 @@ export class DownloadCropperComponent implements OnInit {
     y2: 0
   };
   enableUserInput: any;
+  showFiller: boolean = false;
 
   constructor(private store: Store,
               private fb: FormBuilder,
@@ -128,7 +130,7 @@ export class DownloadCropperComponent implements OnInit {
         x2: width,
         y2: imageFileDetails.height
       };
-      this.showDimensions = true;
+      this.finishedLoadingImage = true;
     });
   }
 
@@ -156,6 +158,7 @@ export class DownloadCropperComponent implements OnInit {
 
 
   download(detail: string): void {
+    this.isDownLoadingImage = true;
     let croppedDownloadRequest = this.store.selectSnapshot(PrepareCroppedForDownloadState.getCroppedValues);
     croppedDownloadRequest.imageId = this.store.selectSnapshot(GetImageByIdState.getImageDetail).imageId;
     croppedDownloadRequest.selectedWidth = Number.parseFloat(detail.split(' x ')[0]);
@@ -163,7 +166,7 @@ export class DownloadCropperComponent implements OnInit {
     console.log(croppedDownloadRequest.selectedWidth);
     this.downloadService
       .downloadIndividualImage(croppedDownloadRequest, true)
-      .subscribe(res => res)
+      .subscribe(res => this.isDownLoadingImage = false);
   }
 
   foo($event: Dimensions) {

@@ -2684,7 +2684,7 @@ class DownloadCropperComponent {
         this.dialog = dialog;
         this.service = service;
         this.downloadService = downloadService;
-        this.showDimensions = false;
+        this.finishedLoadingImage = false;
         this.croppedWidth = false;
         this.croppedHeight = false;
         this.loaded = 0;
@@ -2755,7 +2755,7 @@ class DownloadCropperComponent {
                 x2: width,
                 y2: imageFileDetails.height
             };
-            this.showDimensions = true;
+            this.finishedLoadingImage = true;
         });
     }
     changeStuff($event) {
