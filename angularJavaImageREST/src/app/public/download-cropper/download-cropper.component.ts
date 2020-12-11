@@ -17,6 +17,7 @@ import {DownloadCroppedImageDialogComponent} from "../download-cropped-image-dia
 import {PrepareCroppedForDownloadState} from "../../shared/app-state/states/prepare-cropped-for-download.state";
 import {ImageDownloadService} from "../../serviceV2/image-download.service";
 import {resolveProvidersRequiringFactory} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
+import {DeviceDetectorService} from "ngx-device-detector";
 
 @Component({
   selector: 'app-download-cropper',
@@ -35,7 +36,10 @@ export class DownloadCropperComponent implements OnInit {
   public width: number;
   public height: number;
   public diffRatio: number;
-  public showDimensions: boolean = false;
+  public finishedLoadingImage: boolean = false;
+  public isDownLoadingImage: boolean = null;
+  public showSpinner = true;
+
   public widthChanged: number;
   public croppedWidth: boolean = false;
   public croppedHeight: boolean = false;
@@ -51,13 +55,15 @@ export class DownloadCropperComponent implements OnInit {
     y2: 0
   };
   enableUserInput: any;
+  showFiller: boolean = false;
 
   constructor(private store: Store,
               private fb: FormBuilder,
               private route: ActivatedRoute,
               private dialog: MatDialog,
               private service: ImageRequestService,
-              private downloadService: ImageDownloadService) {
+              private downloadService: ImageDownloadService,
+              private deviceService: DeviceDetectorService,) {
   }
 
   ngOnInit(): void {
@@ -128,7 +134,7 @@ export class DownloadCropperComponent implements OnInit {
         x2: width,
         y2: imageFileDetails.height
       };
-      this.showDimensions = true;
+      this.showSpinner = false;
     });
   }
 
@@ -156,6 +162,7 @@ export class DownloadCropperComponent implements OnInit {
 
 
   download(detail: string): void {
+    this.showSpinner = true;
     let croppedDownloadRequest = this.store.selectSnapshot(PrepareCroppedForDownloadState.getCroppedValues);
     croppedDownloadRequest.imageId = this.store.selectSnapshot(GetImageByIdState.getImageDetail).imageId;
     croppedDownloadRequest.selectedWidth = Number.parseFloat(detail.split(' x ')[0]);
@@ -163,7 +170,7 @@ export class DownloadCropperComponent implements OnInit {
     console.log(croppedDownloadRequest.selectedWidth);
     this.downloadService
       .downloadIndividualImage(croppedDownloadRequest, true)
-      .subscribe(res => res)
+      .subscribe(res => this.showSpinner = false);
   }
 
   foo($event: Dimensions) {
