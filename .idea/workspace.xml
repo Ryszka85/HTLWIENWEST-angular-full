@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:github" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:github" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:github/master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="359b9293-7f69-4b5b-85ad-27b83c1c4c99" name="Default Changelist" comment="HTLProject">
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/profile/profile-view-model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/search-toolbar/search-view.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/delete-image.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/search-by-users.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/actions/request-message.action.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/crop-image.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/delete-image.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/download-details.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/get-base64-for-downloadCropper.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/get-image-by-id.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/prepare-cropped-for-download.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/related-images.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/request-status.state.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/http/req/CroppedDownloadRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/image-file-details.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/request-status.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/util/Base64ToBlobConverter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/util/blob-to-base64-pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/util/filter-strategy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/util/image-model-filter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/util/model-filter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/add-tags-dialog/add-tags-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/add-tags-dialog/add-tags-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/change-image-details-dialog/change-image-details-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/change-image-details-dialog/change-image-details-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/change-image-details-dialog/change-image-details-dialog.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/change-image-details-dialog/change-image-details-dialog.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/change-image-details-dialog/change-image-details-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/change-image-details-dialog/change-image-details-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/edit-profile/edit-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/edit-profile/edit-profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload-wrapper/file-upload-wrapper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload-wrapper/file-upload-wrapper.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload/file-upload.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload/file-upload.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload/file-upload.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload/file-upload.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload/file-upload.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/file-upload/file-upload.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/profile/profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/profile/profile.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/profile/profile.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/profile/profile.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/profile/profile.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/private/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/profile/profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/security/auth-security.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/security/auth-security.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/security/cookie-auth-interceptor.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/security/cookie-auth-interceptor.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/image-download.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/image-download.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/image-upload.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/image-upload.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/update-image-details.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/test/update-image-details.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/update-image-details.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/update-image-details.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/actions/image.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/actions/image.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/actions/user-details.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/actions/user-details.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/User-details.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/User-details.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/images-by-tag-state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/images-by-tag-state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/images-by-user-id.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/images-by-user-id.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/logged-user-details.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/logged-user-details.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/login.state.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/login.state.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/search-by-tag.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/search-by-tag.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/select-image.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/select-image.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/signup.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/signup.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/upload-image.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/app-state/states/upload-image.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/ImagesByTagNameQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/ImagesByTagNameQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/image.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/image.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/upload-image.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/imageModel/upload-image.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/tagModel/test.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/tagModel/test.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/userModel/user-details.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/domain/userModel/user-details.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-detail-view/image-detail-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-detail-view/image-detail-view.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-detail-view/image-detail-view.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-detail-view/image-detail-view.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-detail-view/image-detail-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-detail-view/image-detail-view.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/search-toolbar/search.toolbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/search-toolbar/search.toolbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/search-toolbar/search.toolbar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/search-toolbar/search.toolbar.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/search-toolbar/search.toolbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/search-toolbar/search.toolbar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/address-validation.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/test/address-validation.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/image-request.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/test/image-request.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/image-request.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/image-request.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/user-authentication.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/test/user-authentication.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/service/user-authentication.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/serviceV2/user-authentication.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/signup/signup.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/signup/signup.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/welcome/welcome.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/welcome/image-by-tag.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/welcome/welcome.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/welcome/image-by-tag.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/welcome/welcome.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/welcome/image-by-tag.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/app/shared/welcome/welcome.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/app/public/welcome/image-by-tag.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angularJavaImageREST/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/angularJavaImageREST/src/styles.scss" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/angularJavaImageREST" />
+  </component>
+  <component name="ProjectId" id="1eSfFvRwUiM7bxMhs100mUFe8hP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
+    <property name="js.last.introduce.type" value="CONST" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Code with Me" />
+    <property name="ts.external.directory.path" value="C:\Users\planb\programing\Web\angular\angular_java_image_rest\angularJavaImageREST\node_modules\typescript\lib" />
+    <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\planb\programing\Web\angular\angular_java_image_rest\angularJavaImageREST\src\app\shared\app-state\states" />
+      <recent name="C:\Users\planb\programing\Web\angular\angular_java_image_rest\angularJavaImageREST\src\app\serviceV2" />
+      <recent name="C:\Users\planb\programing\Web\angular\angular_java_image_rest\angularJavaImageREST\src\app\public" />
+      <recent name="C:\Users\planb\programing\Web\angular\angular_java_image_rest\angularJavaImageREST\src\app\serviceV2\test" />
+      <recent name="C:\Users\planb\programing\Web\angular\angular_java_image_rest\angularJavaImageREST\src\app\shared\service\test" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="359b9293-7f69-4b5b-85ad-27b83c1c4c99" name="Default Changelist" comment="" />
+      <created>1594319814903</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594319814903</updated>
+      <workItem from="1594319817822" duration="11248000" />
+      <workItem from="1594575954904" duration="11100000" />
+      <workItem from="1594643013910" duration="42402000" />
+      <workItem from="1594724407896" duration="27678000" />
+      <workItem from="1594768579795" duration="56000" />
+      <workItem from="1594768644606" duration="14000" />
+      <workItem from="1594768710609" duration="33000" />
+      <workItem from="1594768966101" duration="29000" />
+      <workItem from="1594769024356" duration="124000" />
+      <workItem from="1594769174516" duration="15996000" />
+      <workItem from="1594817574397" duration="26088000" />
+      <workItem from="1594918471522" duration="541000" />
+      <workItem from="1595110325628" duration="907000" />
+      <workItem from="1595272818427" duration="145000" />
+      <workItem from="1595793191430" duration="1571000" />
+      <workItem from="1595976603942" duration="2637000" />
+      <workItem from="1595979274126" duration="7114000" />
+      <workItem from="1596042347359" duration="12000" />
+      <workItem from="1596046974399" duration="2301000" />
+      <workItem from="1596570256441" duration="5435000" />
+      <workItem from="1596970397955" duration="27000" />
+      <workItem from="1596970506236" duration="254000" />
+      <workItem from="1596970820556" duration="1395000" />
+      <workItem from="1597101784181" duration="2568000" />
+      <workItem from="1597144649259" duration="8544000" />
+      <workItem from="1597229361238" duration="49592000" />
+      <workItem from="1597318028529" duration="11398000" />
+      <workItem from="1597334153847" duration="1285000" />
+      <workItem from="1597339276379" duration="154000" />
+      <workItem from="1597341295308" duration="683000" />
+      <workItem from="1597343648931" duration="6000" />
+      <workItem from="1597359787994" duration="600000" />
+      <workItem from="1597392224008" duration="831000" />
+      <workItem from="1597423266147" duration="2346000" />
+      <workItem from="1597484079050" duration="818000" />
+      <workItem from="1597487539686" duration="1214000" />
+      <workItem from="1597500331714" duration="4490000" />
+      <workItem from="1597510402946" duration="2982000" />
+      <workItem from="1597562673791" duration="6340000" />
+      <workItem from="1597682280983" duration="31579000" />
+      <workItem from="1597751816663" duration="33256000" />
+      <workItem from="1597833872279" duration="624000" />
+      <workItem from="1597834620035" duration="7230000" />
+      <workItem from="1597845971336" duration="2742000" />
+      <workItem from="1597854447753" duration="7305000" />
+      <workItem from="1597876052864" duration="3079000" />
+      <workItem from="1598007094631" duration="17624000" />
+      <workItem from="1598082689633" duration="10210000" />
+      <workItem from="1598107106285" duration="20557000" />
+      <workItem from="1598183591473" duration="17620000" />
+      <workItem from="1598291027916" duration="10349000" />
+      <workItem from="1598350876690" duration="15345000" />
+      <workItem from="1598435813129" duration="1661000" />
+      <workItem from="1598527759203" duration="6013000" />
+      <workItem from="1598617121612" duration="22230000" />
+      <workItem from="1598697792121" duration="2830000" />
+      <workItem from="1598722404034" duration="4406000" />
+      <workItem from="1598733143943" duration="8753000" />
+      <workItem from="1598808234393" duration="16374000" />
+      <workItem from="1598876321791" duration="16043000" />
+      <workItem from="1598913849994" duration="17411000" />
+      <workItem from="1598967618173" duration="1862000" />
+      <workItem from="1598984782104" duration="2643000" />
+      <workItem from="1598995029005" duration="1266000" />
+      <workItem from="1599066640627" duration="1907000" />
+      <workItem from="1599132634131" duration="13275000" />
+      <workItem from="1599232366313" duration="5745000" />
+      <workItem from="1599339425067" duration="1630000" />
+      <workItem from="1599390751234" duration="17141000" />
+      <workItem from="1599502644989" duration="695000" />
+      <workItem from="1599520227200" duration="1269000" />
+      <workItem from="1599671139216" duration="191000" />
+      <workItem from="1599688758393" duration="7681000" />
+      <workItem from="1599764116308" duration="681000" />
+      <workItem from="1599925049873" duration="8593000" />
+      <workItem from="1600131668880" duration="5049000" />
+      <workItem from="1600188080359" duration="689000" />
+      <workItem from="1600270879132" duration="3201000" />
+      <workItem from="1600987608750" duration="2695000" />
+      <workItem from="1601066536036" duration="12299000" />
+      <workItem from="1601130629992" duration="261000" />
+      <workItem from="1601140620378" duration="5831000" />
+      <workItem from="1601397005016" duration="826000" />
+      <workItem from="1601494014535" duration="1348000" />
+      <workItem from="1601594688977" duration="2885000" />
+      <workItem from="1601851333849" duration="2938000" />
+      <workItem from="1601910469453" duration="163000" />
+      <workItem from="1601939907165" duration="1631000" />
+      <workItem from="1602121373944" duration="647000" />
+      <workItem from="1602182190111" duration="492000" />
+      <workItem from="1602266598887" duration="2712000" />
+      <workItem from="1602333415172" duration="15523000" />
+      <workItem from="1602436259078" duration="1060000" />
+      <workItem from="1602451184852" duration="5101000" />
+      <workItem from="1602498448145" duration="1340000" />
+      <workItem from="1602507064227" duration="473000" />
+      <workItem from="1602509500015" duration="1113000" />
+      <workItem from="1602514411667" duration="642000" />
+      <workItem from="1602520961578" duration="254000" />
+      <workItem from="1602521326450" duration="152000" />
+      <workItem from="1602521896376" duration="610000" />
+      <workItem from="1602527432835" duration="25959000" />
+      <workItem from="1602593421436" duration="1612000" />
+      <workItem from="1602606198961" duration="695000" />
+      <workItem from="1602625111189" duration="1061000" />
+      <workItem from="1602798064467" duration="2873000" />
+      <workItem from="1602866669645" duration="5267000" />
+      <workItem from="1602934494823" duration="34035000" />
+      <workItem from="1603038526985" duration="5749000" />
+      <workItem from="1603118388503" duration="692000" />
+      <workItem from="1603282180536" duration="692000" />
+      <workItem from="1603313532447" duration="8923000" />
+      <workItem from="1603396439258" duration="10668000" />
+      <workItem from="1603457729558" duration="5117000" />
+      <workItem from="1603476545676" duration="3045000" />
+      <workItem from="1603531918908" duration="8036000" />
+      <workItem from="1603559415470" duration="595000" />
+      <workItem from="1603567896839" duration="5435000" />
+      <workItem from="1603623128443" duration="339000" />
+      <workItem from="1603651777059" duration="597000" />
+      <workItem from="1603709550895" duration="1080000" />
+      <workItem from="1603714665684" duration="1764000" />
+      <workItem from="1603730969253" duration="17576000" />
+      <workItem from="1603807910806" duration="10658000" />
+      <workItem from="1603846445601" duration="4876000" />
+      <workItem from="1603899320292" duration="22483000" />
+      <workItem from="1603980513746" duration="26463000" />
+      <workItem from="1604072594151" duration="10054000" />
+      <workItem from="1604139334181" duration="30905000" />
+      <workItem from="1604225858766" duration="20197000" />
+      <workItem from="1604317347228" duration="21382000" />
+      <workItem from="1604419388770" duration="15299000" />
+      <workItem from="1604506311402" duration="481000" />
+      <workItem from="1604596277771" duration="2016000" />
+      <workItem from="1604606333204" duration="717000" />
+      <workItem from="1604765152001" duration="4260000" />
+      <workItem from="1604842407131" duration="214000" />
+      <workItem from="1604858562608" duration="19256000" />
+      <workItem from="1604936285356" duration="8806000" />
+      <workItem from="1605029361475" duration="1286000" />
+      <workItem from="1605101430843" duration="17136000" />
+      <workItem from="1605196549117" duration="15127000" />
+      <workItem from="1605269606977" duration="23064000" />
+      <workItem from="1605320778371" duration="197000" />
+      <workItem from="1605369813288" duration="30670000" />
+      <workItem from="1605442147705" duration="928000" />
+      <workItem from="1605443504306" duration="1071000" />
+      <workItem from="1605445066999" duration="130000" />
+      <workItem from="1605445216591" duration="61000" />
+      <workItem from="1605445290426" duration="20451000" />
+      <workItem from="1605535751519" duration="852000" />
+      <workItem from="1605536801045" duration="63000" />
+      <workItem from="1605536883280" duration="5820000" />
+      <workItem from="1605654862630" duration="45000" />
+      <workItem from="1605654936340" duration="9620000" />
+      <workItem from="1605715537347" duration="3506000" />
+      <workItem from="1605818946031" duration="9186000" />
+      <workItem from="1605978068708" duration="1879000" />
+      <workItem from="1606056522535" duration="953000" />
+      <workItem from="1606143191135" duration="19138000" />
+      <workItem from="1606223750900" duration="7353000" />
+      <workItem from="1606334493116" duration="14377000" />
+      <workItem from="1606504017961" duration="5566000" />
+    </task>
+    <task id="LOCAL-00001" summary="HTLProject">
+      <created>1601595458636</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601595458636</updated>
+    </task>
+    <task id="LOCAL-00002" summary="HTLProject">
+      <created>1603421846673</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603421846673</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="github/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="HTLProject" />
+    <option name="LAST_COMMIT_MESSAGE" value="HTLProject" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="686" y="110" key="#com.intellij.ide.util.MemberChooser" timestamp="1606163573093">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="549" y="91" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1598655047679" />
+    <state x="549" y="91" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1604431735214" />
+    <state x="549" y="91" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1604177509998" />
+    <state x="686" y="110" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1916.-2160.1365.680@0.0.1920.1040" timestamp="1605663537171" />
+    <state x="686" y="110" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606163573093" />
+    <state x="448" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602527466145">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="448" y="167" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.864@0.0.1536.864" timestamp="1602527466145" />
+    <state x="390" y="212" key="EditFileWatcherDialog" timestamp="1598091565707">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="390" y="212" key="EditFileWatcherDialog/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1598091565707" />
+    <state x="548" y="186" key="FileChooserDialogImpl" timestamp="1602267837156">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="548" y="186" key="FileChooserDialogImpl/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1598383462386" />
+    <state x="548" y="186" key="FileChooserDialogImpl/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1601601516799" />
+    <state x="548" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1602267837156" />
+    <state x="573" y="331" key="Github.ShareDialog" timestamp="1601596064084">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="573" y="331" key="Github.ShareDialog/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1601596064084" />
+    <state x="270" y="7" key="SettingsEditor" timestamp="1605538397735">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="216" y="6" key="SettingsEditor/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1603316547154" />
+    <state x="216" y="6" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1604770587554" />
+    <state x="270" y="7" key="SettingsEditor/0.0.1920.1040/-1916.-2160.1365.680@0.0.1920.1040" timestamp="1605538397735" />
+    <state x="270" y="7" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605538035952" />
+    <state x="-1866" y="-2022" key="Vcs.Push.Dialog.v2" timestamp="1603421900388">
+      <screen x="-2187" y="-2160" width="1365" height="720" />
+    </state>
+    <state x="-1866" y="-2022" key="Vcs.Push.Dialog.v2/0.0.1536.864/-2187.-2160.1365.720@-2187.-2160.1365.720" timestamp="1603421900388" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1601595231313" />
+    <state x="199" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602540838202">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="199" y="13" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1602540838202" />
+    <state x="-1890" y="-2113" width="557" height="626" key="dock-window-1" timestamp="1605443073669">
+      <screen x="-1916" y="-2160" width="1365" height="680" />
+    </state>
+    <state x="-1890" y="-2113" width="557" height="626" key="dock-window-1/0.0.1920.1040/-1916.-2160.1365.680@0.0.1920.1040" timestamp="1605443073669" />
+    <state x="-7" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1604859774762" />
+    <state x="953" y="0" width="974" height="1047" key="dock-window-2" timestamp="1604859437296">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="953" y="0" width="974" height="1047" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1604859437296" />
+    <state x="574" y="51" width="872" height="939" key="find.popup" timestamp="1606511461348">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="459" y="42" width="668" height="780" key="find.popup/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1599133314983" />
+    <state x="-1779" y="-2125" width="680" height="650" key="find.popup/0.0.1536.864/-2187.-2160.1365.720@-2187.-2160.1365.720" timestamp="1603416706723" />
+    <state x="459" y="42" width="697" height="780" key="find.popup/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1604437740539" />
+    <state x="459" y="42" width="812" height="780" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1604232043623" />
+    <state x="574" y="51" width="872" height="939" key="find.popup/0.0.1920.1040/-1916.-2160.1365.680@0.0.1920.1040" timestamp="1605663085239" />
+    <state x="574" y="51" width="872" height="939" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606511461348" />
+    <state x="549" y="237" key="git4idea.history.wholeTree.VcsStructureChooser" timestamp="1601595952809">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="237" key="git4idea.history.wholeTree.VcsStructureChooser/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1601595952809" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1598562193933">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1598562193933" />
+    <state x="601" y="246" width="700" height="530" key="recent.locations.popup" timestamp="1606233378109">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="601" y="246" width="700" height="530" key="recent.locations.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606233378109" />
+    <state x="480" y="203" key="refactoring.ChangeSignatureDialog" timestamp="1603900090212">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="480" y="203" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1603900090212" />
+    <state x="531" y="237" width="840" height="815" key="run.anything.popup" timestamp="1605292831370">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1598904901966" />
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1603827005891" />
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1602370919870" />
+    <state x="531" y="237" width="840" height="815" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605292831370" />
+    <state x="538" y="218" width="947" height="817" key="search.everywhere.popup" timestamp="1606513955998">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864/-1258.-2160.1365.720@0.0.1536.864" timestamp="1599143660408" />
+    <state x="-1804" y="-2009" width="672" height="565" key="search.everywhere.popup/0.0.1536.864/-2187.-2160.1365.720@-2187.-2160.1365.720" timestamp="1603420521561" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864/-2187.-2160.1365.720@0.0.1536.864" timestamp="1604439626701" />
+    <state x="430" y="181" width="757" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1604774868088" />
+    <state x="538" y="218" width="947" height="817" key="search.everywhere.popup/0.0.1920.1040/-1916.-2160.1365.680@0.0.1920.1040" timestamp="1605716749816" />
+    <state x="538" y="218" width="947" height="817" key="search.everywhere.popup/0.0.1920.1040/-2187.-2160.1365.680@0.0.1920.1040" timestamp="1605101709268" />
+    <state x="538" y="218" width="947" height="817" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606513955998" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/angularJavaImageREST/src/app/shared/image-content/image-content.component.html</url>
+          <line>107</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
